@@ -47,24 +47,11 @@
     "react-native": ">=0.59"
   },
   "devDependencies": {
-    "husky": ">=1",
-    "lint-staged": ">=8",
     "prettier": "^1.18.2",
     "@babel/core": "^7.5.5",
     "@babel/runtime": "^7.5.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "eslint": "^6.3.0",
     "metro-react-native-babel-preset": "^0.56.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
