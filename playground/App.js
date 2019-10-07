@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         rotate: '-90deg',
       },
     ],
-    tintColor: '#0eca2d',
+    tintColor: '#61dafb',
   },
   wrapper: {
     flex: 1,

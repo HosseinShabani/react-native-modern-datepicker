@@ -10,7 +10,7 @@ const options = {
   textHeaderColor: '#212c35',
   textDefaultColor: '#2d4150',
   selectedTextColor: '#fff',
-  mainColor: '#0eca2d',
+  mainColor: '#61dafb',
   textSecondaryColor: '#7a92a5',
   borderColor: 'rgba(122, 146, 165, 0.1)',
   defaultFont: 'System',

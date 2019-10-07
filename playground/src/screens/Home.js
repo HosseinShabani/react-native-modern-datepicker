@@ -52,10 +52,7 @@ const ExampleCard = ({route, title, onPress}) => {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.cartContainer}>
         <Text style={styles.cartTitle}>{title}</Text>
-        <Image
-          source={require('../assets/images/chevron.png')}
-          style={styles.arrow}
-        />
+        <Image source={require('../assets/images/chevron.png')} style={styles.arrow} />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -70,11 +67,7 @@ const Home = ({navigation}) => {
       </View>
       <ScrollView>
         {EXAMPLES.map(item => (
-          <ExampleCard
-            key={item.id}
-            {...item}
-            onPress={() => navigation.navigate(item.route)}
-          />
+          <ExampleCard key={item.id} {...item} onPress={() => navigation.navigate(item.route)} />
         ))}
       </ScrollView>
     </SafeAreaView>
@@ -97,7 +90,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Bold',
     fontSize: 26,
     textAlign: 'center',
-    color: '#0eca2d',
+    color: '#61dafb',
   },
   titleUp: {
     fontFamily: 'OpenSans-Regular',
@@ -125,7 +118,7 @@ const styles = StyleSheet.create({
         rotate: '90deg',
       },
     ],
-    tintColor: '#0eca2d',
+    tintColor: '#61dafb',
   },
 });
 
