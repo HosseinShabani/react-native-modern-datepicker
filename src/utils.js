@@ -71,6 +71,8 @@ class utils {
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
 
+  getFormatedDate = (date = new Date(), format = 'YYYY/MM/DD') => moment(date).format(format);
+
   getTime = time => this.getDate(time).format(this.config.timeFormat);
 
   getToday = () => this.getFormated(m, 'dateFormat');
@@ -160,7 +162,6 @@ class utils {
       : moment.jDaysInMonth(date.jYear(), date.jMonth());
     const firstDay = isGregorian ? date.date(1) : date.jDate(1);
     const dayOfMonth = (firstDay.day() + Number(!isGregorian)) % 7;
-    // alert(dayOfMonth);
     return [
       ...new Array(dayOfMonth),
       ...[...new Array(currentMonthDays)].map((i, n) => {
