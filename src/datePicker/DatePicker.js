@@ -56,7 +56,7 @@ const DatePicker = props => {
       timeOpen: props.mode === 'time',
     }),
   };
-  const [minHeight, setMinHeight] = useState(0);
+  const [minHeight, setMinHeight] = useState(300);
   const style = styles(contextValue.options);
 
   const renderBody = () => {
