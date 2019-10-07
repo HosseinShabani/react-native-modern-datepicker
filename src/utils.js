@@ -73,7 +73,7 @@ class utils {
 
   getTime = time => this.getDate(time).format(this.config.timeFormat);
 
-  getToday = () => this.getFormated(m);
+  getToday = () => this.getFormated(m, 'dateFormat');
 
   getMonthName = month => this.config.monthNames[month];
 

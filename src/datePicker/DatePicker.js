@@ -49,7 +49,9 @@ const DatePicker = props => {
     utils: calendarUtils,
     state: useReducer(reducer, {
       activeDate: props.current || calendarUtils.getToday(),
-      selectedDate: '',
+      selectedDate: props.selected
+        ? calendarUtils.getFormated(calendarUtils.getDate(props.selected))
+        : '',
       monthOpen: props.mode === 'monthYear',
       timeOpen: props.mode === 'time',
     }),
@@ -127,6 +129,7 @@ DatePicker.defaultProps = {
   onTimeChange: () => null,
   onDateChange: () => null,
   current: '',
+  selected: '',
   minimumDate: '',
   maximumDate: '',
   selectorStartingYear: 0,
@@ -145,6 +148,7 @@ DatePicker.propTypes = {
   onTimeChange: PropTypes.func,
   onDateChange: PropTypes.func,
   current: PropTypes.string,
+  selected: PropTypes.string,
   minimumDate: PropTypes.string,
   maximumDate: PropTypes.string,
   selectorStartingYear: PropTypes.number,
