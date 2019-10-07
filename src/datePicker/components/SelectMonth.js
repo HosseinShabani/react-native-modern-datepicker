@@ -248,6 +248,8 @@ const styles = theme =>
       color: theme.textHeaderColor,
       fontFamily: theme.headerFont,
       textAlignVertical: 'center',
+      minWidth: 100,
+      textAlign: 'center',
     },
   });
 
