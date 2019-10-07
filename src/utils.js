@@ -65,7 +65,7 @@ class utils {
     };
     this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
     if (mode === 'time' || mode === 'datepicker') {
-      this.config.selectedFormat = this.config.dateFormat + 'T' + this.config.timeFormat;
+      this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
     }
   }
 
