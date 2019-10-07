@@ -17,7 +17,7 @@ const options = {
   headerFont: 'System',
   textFontSize: 15,
   textHeaderFontSize: 17,
-  headerAnimationDistance: 50,
+  headerAnimationDistance: 100,
   daysAnimationDistance: 200,
 };
 

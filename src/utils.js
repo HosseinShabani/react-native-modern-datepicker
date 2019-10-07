@@ -184,7 +184,7 @@ class utils {
     ];
   };
 
-  useMonthAnimation = (activeDate, distance) => {
+  useMonthAnimation = (activeDate, distance, onEnd = () => null) => {
     const [lastDate, setLastDate] = useState(activeDate);
     const [changeWay, setChangeWay] = useState(null);
     const monthYearAnimation = useRef(new Animated.Value(0)).current;
@@ -195,10 +195,10 @@ class utils {
       monthYearAnimation.setValue(1);
       Animated.timing(monthYearAnimation, {
         toValue: 0,
-        duration: 350,
+        duration: 300,
         useNativeDriver: true,
-        easing: Easing.bezier(0.17, 0.67, 0.46, 1),
-      }).start();
+        easing: Easing.bezier(0.33, 0.66, 0.54, 1),
+      }).start(onEnd);
     };
 
     const shownAnimation = {
