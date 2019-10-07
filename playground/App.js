@@ -5,9 +5,10 @@ import {
   TouchableWithoutFeedback,
   View,
   SafeAreaView,
+  Dimensions,
 } from 'react-native';
-import { createAppContainer, withNavigation } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer, withNavigation} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 //screens
 import {
@@ -38,7 +39,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: '5%',
+    padding: Dimensions.get('screen').width < 350 ? 5 : 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  back: {
+    height: '100%',
+    width: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -49,20 +56,17 @@ const defaultOptions = {
   headerFont: 'OpenSans-Bold',
 };
 
-const PageWrapper = ({ children, style = {} }) => (
+const PageWrapper = ({children, style = {}}) => (
   <SafeAreaView style={styles.wrapper}>
     <View style={[styles.container, style]}>{children}</View>
   </SafeAreaView>
 );
 
-const BackButton = withNavigation(({ navigation }) => {
+const BackButton = withNavigation(({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
-      <View>
-        <Image
-          style={styles.arrow}
-          source={require('./src/assets/images/chevron.png')}
-        />
+      <View style={styles.back}>
+        <Image style={styles.arrow} source={require('./src/assets/images/chevron.png')} />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -92,8 +96,7 @@ const AppNavigator = createStackNavigator({
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           backgroundColor: '#090C08',
-        }}
-      >
+        }}>
         <CustomizationExample defaultOptions={defaultOptions} />
       </PageWrapper>
     ),
