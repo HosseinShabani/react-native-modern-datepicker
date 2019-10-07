@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, TouchableOpacity, Text, Image, StyleSheet, Animated} from 'react-native';
 
@@ -17,12 +17,17 @@ const Header = ({changeMonth}) => {
   } = useCalendar();
   const [mainState, setMainState] = state;
   const style = styles(options);
+  const [disableChange, setDisableChange] = useState(false);
   const [
     {lastDate, shownAnimation, hiddenAnimation},
     changeMonthAnimation,
-  ] = utils.useMonthAnimation(mainState.activeDate, options.headerAnimationDistance);
+  ] = utils.useMonthAnimation(mainState.activeDate, options.headerAnimationDistance, () =>
+    setDisableChange(false),
+  );
 
   const onChangeMonth = type => {
+    if (disableChange) return;
+    setDisableChange(true);
     changeMonthAnimation(type);
     const modificationNumber = type === 'NEXT' ? 1 : -1;
     const newDate = utils

@@ -65,15 +65,17 @@ class utils {
     };
     this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
     if (mode === 'time' || mode === 'datepicker') {
-      this.config.selectedFormat = this.config.dateFormat + 'T' + this.config.timeFormat;
+      this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
     }
   }
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
 
+  getFormatedDate = (date = new Date(), format = 'YYYY/MM/DD') => moment(date).format(format);
+
   getTime = time => this.getDate(time).format(this.config.timeFormat);
 
-  getToday = () => this.getFormated(m);
+  getToday = () => this.getFormated(m, 'dateFormat');
 
   getMonthName = month => this.config.monthNames[month];
 
@@ -160,7 +162,6 @@ class utils {
       : moment.jDaysInMonth(date.jYear(), date.jMonth());
     const firstDay = isGregorian ? date.date(1) : date.jDate(1);
     const dayOfMonth = (firstDay.day() + Number(!isGregorian)) % 7;
-    // alert(dayOfMonth);
     return [
       ...new Array(dayOfMonth),
       ...[...new Array(currentMonthDays)].map((i, n) => {
@@ -183,7 +184,7 @@ class utils {
     ];
   };
 
-  useMonthAnimation = (activeDate, distance) => {
+  useMonthAnimation = (activeDate, distance, onEnd = () => null) => {
     const [lastDate, setLastDate] = useState(activeDate);
     const [changeWay, setChangeWay] = useState(null);
     const monthYearAnimation = useRef(new Animated.Value(0)).current;
@@ -194,10 +195,10 @@ class utils {
       monthYearAnimation.setValue(1);
       Animated.timing(monthYearAnimation, {
         toValue: 0,
-        duration: 350,
+        duration: 300,
         useNativeDriver: true,
-        easing: Easing.bezier(0.17, 0.67, 0.46, 1),
-      }).start();
+        easing: Easing.bezier(0.33, 0.66, 0.54, 1),
+      }).start(onEnd);
     };
 
     const shownAnimation = {

@@ -111,10 +111,10 @@ const SelectMonth = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={style.arrowWrapper}
-          onPress={() => !prevDisable && onSelectYear(+1)}>
+          onPress={() => !nextDisable && onSelectYear(-1)}>
           <Image
             source={require('../../assets/arrow.png')}
-            style={[style.arrow, prevDisable && style.disableArrow]}
+            style={[style.arrow, nextDisable && style.disableArrow]}
           />
         </TouchableOpacity>
         <TextInput
@@ -133,10 +133,10 @@ const SelectMonth = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={style.arrowWrapper}
-          onPress={() => !nextDisable && onSelectYear(-1)}>
+          onPress={() => !prevDisable && onSelectYear(+1)}>
           <Image
             source={require('../../assets/arrow.png')}
-            style={[style.arrow, style.arrowLeft, nextDisable && style.disableArrow]}
+            style={[style.arrow, style.arrowLeft, prevDisable && style.disableArrow]}
           />
         </TouchableOpacity>
       </View>
@@ -248,6 +248,8 @@ const styles = theme =>
       color: theme.textHeaderColor,
       fontFamily: theme.headerFont,
       textAlignVertical: 'center',
+      minWidth: 100,
+      textAlign: 'center',
     },
   });
 

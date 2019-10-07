@@ -10,14 +10,14 @@ const options = {
   textHeaderColor: '#212c35',
   textDefaultColor: '#2d4150',
   selectedTextColor: '#fff',
-  mainColor: '#0eca2d',
+  mainColor: '#61dafb',
   textSecondaryColor: '#7a92a5',
   borderColor: 'rgba(122, 146, 165, 0.1)',
   defaultFont: 'System',
   headerFont: 'System',
   textFontSize: 15,
   textHeaderFontSize: 17,
-  headerAnimationDistance: 50,
+  headerAnimationDistance: 100,
   daysAnimationDistance: 200,
 };
 
@@ -49,12 +49,14 @@ const DatePicker = props => {
     utils: calendarUtils,
     state: useReducer(reducer, {
       activeDate: props.current || calendarUtils.getToday(),
-      selectedDate: '',
+      selectedDate: props.selected
+        ? calendarUtils.getFormated(calendarUtils.getDate(props.selected))
+        : '',
       monthOpen: props.mode === 'monthYear',
       timeOpen: props.mode === 'time',
     }),
   };
-  const [minHeight, setMinHeight] = useState(0);
+  const [minHeight, setMinHeight] = useState(300);
   const style = styles(contextValue.options);
 
   const renderBody = () => {
@@ -86,7 +88,7 @@ const DatePicker = props => {
     <CalendarContext.Provider value={contextValue}>
       <View
         style={[style.container, {minHeight}, props.style]}
-        onLayout={({nativeEvent}) => setMinHeight(nativeEvent.layout.width * 0.9 + 50)}>
+        onLayout={({nativeEvent}) => setMinHeight(nativeEvent.layout.width * 0.9 + 55)}>
         {renderBody()}
       </View>
     </CalendarContext.Provider>
@@ -127,6 +129,7 @@ DatePicker.defaultProps = {
   onTimeChange: () => null,
   onDateChange: () => null,
   current: '',
+  selected: '',
   minimumDate: '',
   maximumDate: '',
   selectorStartingYear: 0,
@@ -145,6 +148,7 @@ DatePicker.propTypes = {
   onTimeChange: PropTypes.func,
   onDateChange: PropTypes.func,
   current: PropTypes.string,
+  selected: PropTypes.string,
   minimumDate: PropTypes.string,
   maximumDate: PropTypes.string,
   selectorStartingYear: PropTypes.number,

@@ -82,7 +82,7 @@ const TimeScroller = ({title, data, onChange}) => {
         })}
         data={data}
         onMomentumScrollEnd={() => {
-          const index = Math.floor(active.current / itemSize);
+          const index = Math.round(active.current / itemSize);
           onChange(data[index + 2]);
         }}
         keyExtractor={(x, i) => String(i)}
