@@ -1,114 +1,163 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
-  SafeAreaView,
+  Image,
   StyleSheet,
-  ScrollView,
+  TouchableWithoutFeedback,
   View,
-  Text,
-  StatusBar,
+  SafeAreaView,
 } from 'react-native';
+import { createAppContainer, withNavigation } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
+//screens
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+  Home,
+  CustomizationExample,
+  BasicUsageExample,
+  FullUsageExample,
+  JalaaliExample,
+  MinMaxExample,
+  MonthYearExample,
+  TimePickerExample,
+} from './src/screens';
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  arrow: {
+    width: 20,
+    height: 20,
+    marginLeft: 10,
+    transform: [
+      {
+        rotate: '-90deg',
+      },
+    ],
+    tintColor: '#0eca2d',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  wrapper: {
+    flex: 1,
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  container: {
+    flex: 1,
+    padding: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
-export default App;
+const defaultOptions = {
+  defaultFont: 'OpenSans-Regular',
+  headerFont: 'OpenSans-Bold',
+};
+
+const PageWrapper = ({ children, style = {} }) => (
+  <SafeAreaView style={styles.wrapper}>
+    <View style={[styles.container, style]}>{children}</View>
+  </SafeAreaView>
+);
+
+const BackButton = withNavigation(({ navigation }) => {
+  return (
+    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+      <View>
+        <Image
+          style={styles.arrow}
+          source={require('./src/assets/images/chevron.png')}
+        />
+      </View>
+    </TouchableWithoutFeedback>
+  );
+});
+
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  BasicUsageExample: {
+    screen: () => (
+      <PageWrapper>
+        <BasicUsageExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Basic usage',
+      headerLeft: <BackButton />,
+    },
+  },
+  CustomizableExample: {
+    screen: () => (
+      <PageWrapper
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          backgroundColor: '#090C08',
+        }}
+      >
+        <CustomizationExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Customization',
+      headerLeft: <BackButton />,
+    },
+  },
+
+  JalaaliExample: {
+    screen: () => (
+      <PageWrapper>
+        <JalaaliExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Jalaali',
+      headerLeft: <BackButton />,
+    },
+  },
+  MinMaxExample: {
+    screen: () => (
+      <PageWrapper>
+        <MinMaxExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Minimum & Maximum',
+      headerLeft: <BackButton />,
+    },
+  },
+  FullUsageExample: {
+    screen: () => (
+      <PageWrapper>
+        <FullUsageExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Full-usage',
+      headerLeft: <BackButton />,
+    },
+  },
+  TimePickerExample: {
+    screen: () => (
+      <PageWrapper>
+        <TimePickerExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Time Picker',
+      headerLeft: <BackButton />,
+    },
+  },
+  MonthYearExample: {
+    screen: () => (
+      <PageWrapper>
+        <MonthYearExample defaultOptions={defaultOptions} />
+      </PageWrapper>
+    ),
+    navigationOptions: {
+      headerTitle: 'Month Year',
+      headerLeft: <BackButton />,
+    },
+  },
+});
+
+export default createAppContainer(AppNavigator);

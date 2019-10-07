@@ -19,6 +19,10 @@
 		32C87A38816CFEAD27035AA9 /* libPods-playground-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC94AC30FB8E95A16787FBB /* libPods-playground-tvOS.a */; };
 		36E340744CC0A345D628E428 /* libPods-playground-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8992B4FF727C298CAFA56E3 /* libPods-playground-tvOSTests.a */; };
 		54C28407E6AD1B19E9E0EA6F /* libPods-playgroundTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A88340A18FC3732FB7E2E2 /* libPods-playgroundTests.a */; };
+		72C53B4F234B6DD4007E74AE /* Shabnam-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C53B4B234B6DD4007E74AE /* Shabnam-Light.ttf */; };
+		72C53B50234B6DD4007E74AE /* Shabnam-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C53B4C234B6DD4007E74AE /* Shabnam-Medium.ttf */; };
+		72C53B51234B6DD4007E74AE /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C53B4D234B6DD4007E74AE /* OpenSans-Regular.ttf */; };
+		72C53B52234B6DD4007E74AE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C53B4E234B6DD4007E74AE /* OpenSans-Bold.ttf */; };
 		B5752FEC012B72F33ECD4068 /* libPods-playground.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1963D7C5E0AFDBE7E1BED4B0 /* libPods-playground.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 		2D02E4901E0B4A5D006451C7 /* playground-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "playground-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A88340A18FC3732FB7E2E2 /* libPods-playgroundTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-playgroundTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4269A35F65B9BA81DB6B7033 /* Pods-playground-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playground-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-playground-tvOSTests/Pods-playground-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		72C53B4B234B6DD4007E74AE /* Shabnam-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Shabnam-Light.ttf"; path = "../src/assets/fonts/Shabnam-Light.ttf"; sourceTree = "<group>"; };
+		72C53B4C234B6DD4007E74AE /* Shabnam-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Shabnam-Medium.ttf"; path = "../src/assets/fonts/Shabnam-Medium.ttf"; sourceTree = "<group>"; };
+		72C53B4D234B6DD4007E74AE /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		72C53B4E234B6DD4007E74AE /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		7AE07ADFC28DB8F2194984D7 /* Pods-playground-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playground-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-playground-tvOS/Pods-playground-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8FC94AC30FB8E95A16787FBB /* libPods-playground-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-playground-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0375F3A3D6CF8A4FBF6391D /* Pods-playground-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playground-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-playground-tvOSTests/Pods-playground-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +133,7 @@
 		13B07FAE1A68108700A75B9A /* playground */ = {
 			isa = PBXGroup;
 			children = (
+				72C53B4A234B6D7F007E74AE /* fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -147,6 +156,17 @@
 				30A88340A18FC3732FB7E2E2 /* libPods-playgroundTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72C53B4A234B6D7F007E74AE /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				72C53B4E234B6DD4007E74AE /* OpenSans-Bold.ttf */,
+				72C53B4D234B6DD4007E74AE /* OpenSans-Regular.ttf */,
+				72C53B4B234B6DD4007E74AE /* Shabnam-Light.ttf */,
+				72C53B4C234B6DD4007E74AE /* Shabnam-Medium.ttf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -194,7 +214,6 @@
 				CCA890159E7A12233811F648 /* Pods-playgroundTests.debug.xcconfig */,
 				AA7FCF1D5869150FBBAE9A34 /* Pods-playgroundTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +327,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -336,7 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C53B51234B6DD4007E74AE /* OpenSans-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				72C53B52234B6DD4007E74AE /* OpenSans-Bold.ttf in Resources */,
+				72C53B4F234B6DD4007E74AE /* Shabnam-Light.ttf in Resources */,
+				72C53B50234B6DD4007E74AE /* Shabnam-Medium.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,7 +659,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.reactnativemoderndatepicker.playground;
 				PRODUCT_NAME = playground;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -654,7 +678,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.reactnativemoderndatepicker.playground;
 				PRODUCT_NAME = playground;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
