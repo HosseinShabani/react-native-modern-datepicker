@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/react-native-modren-datepicker",
+  pathPrefix: '/react-native-modern-datepicker',
   siteMetadata: {
     title: `React Native Modern Datepicker`,
     description: `A customizable calendar, time & month picker for React Native
@@ -18,4 +18,4 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
   ],
-}
+};

@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react';
 
 //screens
-import Home from "./home"
+import Home from './home';
 
 //styles
-import "../styles/style.css"
+import '../styles/style.css';
 
-const IndexPage = () => <Home />
+const IndexPage = () => <Home />;
 
-export default IndexPage
+export default IndexPage;
