@@ -1,7 +1,7 @@
 {
-  "name": "react-modern-datepicker-website",
+  "name": "react-native-modern-datepicker-website",
   "private": true,
-  "description": "React Modern Datepicker website.",
+  "description": "React Native Modern Datepicker website.",
   "version": "0.1.0",
   "author": "Hirad Arshadi <hiradwork@gmail.com>",
   "dependencies": {
