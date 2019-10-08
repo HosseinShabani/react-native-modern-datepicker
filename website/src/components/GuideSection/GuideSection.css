@@ -1,0 +1,47 @@
+.GuideSection {
+  width: 100%;
+  padding: 5em 0 7em 0;
+}
+
+.GuideSection .GuideSection__container {
+  padding: 0 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.GuideSection .GuideSection__container > section {
+  flex: 1;
+}
+
+.GuideSection .GuideSection__container > section:first-child {
+  margin-right: 7em;
+}
+
+.GuideSection .GuideSection__container > section:last-child .Code pre {
+  max-width: 40em;
+}
+
+.GuideSection.-installation .GuideSection__container > section:last-child {
+  overflow-x: hidden;
+}
+
+/* Responsives */
+
+@media screen and (max-width: 1024px) {
+  .GuideSection .GuideSection__container {
+    flex-direction: column;
+  }
+
+  .GuideSection .GuideSection__container > section {
+    align-items: center;
+  }
+
+  .GuideSection .GuideSection__container > section:first-child {
+    margin-right: 0;
+    margin-bottom: 4em;
+  }
+  .GuideSection.-installation .GuideSection__container > section:last-child {
+    overflow-x: visible;
+  }
+}

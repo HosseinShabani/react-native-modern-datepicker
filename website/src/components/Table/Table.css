@@ -1,0 +1,67 @@
+.TableWrapper {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.Table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-radius: var(--radius-primary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 1.5em;
+  overflow: hidden;
+}
+
+.Table .Table__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.Table .Table__row:last-child {
+  border-bottom: 0;
+}
+
+.Table .Table__row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.Table .Table__field {
+  flex: 1;
+  padding: 2em;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.Table .Table__field .Table__fieldText {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+}
+
+.Table .Table__field:last-child {
+  border-right: 0;
+}
+
+.Table .Table__field.-large {
+  flex: 2;
+}
+
+.Table .Table__field.-small {
+  flex: 0.5;
+}
+
+.Table .Table__row.-header .Table__field .Table__fieldText {
+  font-weight: bold;
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .Table {
+    min-width: 100em;
+  }
+}

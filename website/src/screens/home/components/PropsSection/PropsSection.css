@@ -1,0 +1,11 @@
+.PropsSection {
+  width: 100%;
+}
+
+.PropsSection .PropsSection__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10em 6em;
+  max-width: 85vw;
+}

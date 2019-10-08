@@ -1,0 +1,29 @@
+@font-face {
+  font-family: ProductSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/eot/ProductSansRegular.eot");
+  src: url("../assets/fonts/eot/ProductSansRegular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */ url("../assets/fonts/woff2/ProductSansRegular.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../assets/fonts/woff/ProductSansRegular.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../assets/fonts/ttf/ProductSansRegular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: ProductSans;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../assets/fonts/eot/ProductSansBold.eot");
+  src: url("../assets/fonts/eot/ProductSansBold.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */ url("../assets/fonts/woff2/ProductSansBold.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../assets/fonts/woff/ProductSansBold.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../assets/fonts/ttf/ProductSansBold.ttf") format("truetype");
+}

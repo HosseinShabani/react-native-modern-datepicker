@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="484px" height="432px" viewBox="0 0 484 432" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-258.000000, -284.000000)">
+            <g id="Group-3" transform="translate(186.000000, 205.000000)">
+                <g id="Group-2" transform="translate(118.000000, 46.000000)" stroke="#979797" stroke-linecap="round" stroke-linejoin="round" stroke-width="14">
+                    <ellipse id="Oval" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) " cx="196" cy="249" rx="235" ry="90"></ellipse>
+                    <path d="M196,339 C325.786916,339 431,298.705627 431,249 C431,199.294373 325.786916,159 196,159 C66.2130838,159 -39,199.294373 -39,249 C-39,298.705627 66.2130838,339 196,339 Z" id="Oval" stroke-dasharray="135135136,112" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) "></path>
+                </g>
+                <g id="Group-2" transform="translate(314.000000, 295.000000) rotate(-300.000000) translate(-314.000000, -295.000000) translate(118.000000, 46.000000)" stroke="#979797" stroke-linecap="round" stroke-linejoin="round" stroke-width="14">
+                    <ellipse id="Oval" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) " cx="196" cy="249" rx="235" ry="90"></ellipse>
+                    <path d="M196,339 C325.786916,339 431,298.705627 431,249 C431,199.294373 325.786916,159 196,159 C66.2130838,159 -39,199.294373 -39,249 C-39,298.705627 66.2130838,339 196,339 Z" id="Oval" stroke-dasharray="135135136,112" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) "></path>
+                </g>
+                <g id="Group" transform="translate(314.000000, 295.000000) rotate(-60.000000) translate(-314.000000, -295.000000) translate(118.000000, 46.000000)" stroke="#979797" stroke-linecap="round" stroke-linejoin="round" stroke-width="14">
+                    <ellipse id="Oval" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) " cx="196" cy="249" rx="235" ry="90"></ellipse>
+                    <path d="M196,339 C325.786916,339 431,298.705627 431,249 C431,199.294373 325.786916,159 196,159 C66.2130838,159 -39,199.294373 -39,249 C-39,298.705627 66.2130838,339 196,339 Z" id="Oval" stroke-dasharray="135135136,112" transform="translate(196.000000, 249.000000) rotate(-60.000000) translate(-196.000000, -249.000000) "></path>
+                </g>
+                <circle id="Oval" fill="#D8D8D8" cx="314" cy="294" r="46"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
