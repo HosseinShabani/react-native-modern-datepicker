@@ -1,0 +1,13 @@
+@import "./Prism.css";
+
+.Code > pre {
+  max-width: 40em;
+}
+
+/* Responsives */
+
+@media screen and (max-width: 425px) {
+  .Code > pre {
+    max-width: 30em;
+  }
+}

@@ -1,0 +1,50 @@
+:root {
+  /* Colors */
+  --color-primary: #100c24;
+  --color-secondary: #05030e;
+  --color-light-primary: #e8e8e8;
+  --color-light-secondary: rgba(255, 255, 255, 0.1);
+  --color-light-teritary: rgba(255, 255, 255, 0.2);
+
+  --color-yellow: #fbaf61;
+  --color-blue: #61dafb;
+  --color-blue-light: rgba(97, 218, 251, 0.5);
+
+  --color-dark: rgba(0, 0, 0, 0.3);
+  --color-dark-green: #274047;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(157deg, #0d0825, var(--color-secondary));
+
+  /* Borders */
+  --border-primary: 1px solid var(--color-light-secondary);
+  --border-button: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Text Sizes */
+  --text-xs: 0.75em; /* 12px */
+  --text-sm: 0.875em; /* 14px */
+  --text-md: 1em; /* 16px */
+  --text-lg: 1.125em; /* 18px */
+  --text-xlg: 4.5em; /* 72px */
+
+  /* Icon Sizes */
+  --icon-md: 1em;
+  --icon-lg: 1.3em;
+  --icon-xlg: 1.7em;
+
+  /* Sizes */
+  --navbar-height: 5.5em;
+
+  /* Timings */
+  --transition: 0.35s;
+
+  /* Radiuses */
+  --radius-primary: 1.25em;
+  --radius-secondary: 5.25em;
+
+  /* Screen sizes */
+  --screen-xl: 1440px;
+  --screen-lg: 1024px;
+  --screen-sm: 768px;
+  --screen-xs: 425px;
+}

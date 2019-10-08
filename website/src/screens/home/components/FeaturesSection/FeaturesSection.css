@@ -1,0 +1,91 @@
+.FeaturesSection {
+  width: 100%;
+}
+
+.FeaturesSection .FeaturesSection__container {
+  max-width: 85vw;
+  border-radius: var(--radius-secondary);
+  background-color: var(--color-dark);
+  padding: 6em;
+}
+
+.GettingStarted {
+  margin-bottom: 6em;
+}
+
+.GettingStarted strong {
+  font-weight: bold;
+}
+
+.GettingStarted p {
+  line-height: 2em;
+  font-size: 1.2em;
+  color: var(--color-blue);
+  opacity: 0.8;
+}
+
+.GettingStarted li p {
+  margin: 0;
+}
+
+.Feature {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10em;
+}
+
+.Feature:last-child {
+  margin-bottom: 0;
+}
+
+.Feature > *:first-child {
+  flex: 0;
+}
+
+.Feature:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.Feature:nth-child(odd) .Feature__gifContainer {
+  margin-left: 0;
+  margin-right: 7em;
+}
+
+.Feature .Feature__gifContainer {
+  width: 28em;
+  height: 28em;
+  border-radius: var(--radius-primary);
+  overflow: hidden;
+}
+
+.Feature .Feature__gifContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: center;
+}
+
+/* Responsives */
+
+@media screen and (max-width: 1024px) {
+  .Feature {
+    flex-direction: column !important;
+    margin: 0;
+    align-items: center;
+    margin-bottom: 6em;
+  }
+  .Feature .GuideCard {
+    align-items: center;
+    margin-bottom: 3em;
+  }
+  .Feature .Feature__gifContainer {
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .FeaturesSection .FeaturesSection__container {
+    max-width: 100%;
+  }
+}

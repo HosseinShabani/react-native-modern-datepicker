@@ -1,0 +1,5 @@
+{
+  "name": "GuideCard",
+  "private": true,
+  "main": "./GuideCard.js"
+}

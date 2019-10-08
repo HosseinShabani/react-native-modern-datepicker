@@ -1,0 +1,111 @@
+.MainHeader {
+  width: 100%;
+  height: 100vh;
+  padding: 3em 0;
+  overflow-x: hidden;
+}
+
+.MainHeader .MainHeader__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.MainHeader .MainHeader__titleWrapper {
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: ProductSans;
+}
+
+.MainHeader .MainHeader__title {
+  color: var(--color-blue);
+  text-align: center;
+  line-height: 1.1em;
+  font-size: var(--text-xlg);
+  opacity: 0;
+}
+
+.MainHeader .MainHeader__title:not(.-bold):nth-child(5) {
+  margin-right: 0.3em;
+}
+
+.MainHeader .MainHeader__title.-bold:nth-child(6) {
+  margin-right: 0.3em;
+}
+
+.MainHeader .MainHeader__title.-bold {
+  font-weight: bold;
+}
+
+.MainHeader .MainHeader__titleContainer {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.MainHeader .MainHeader__subtitleContainer {
+  margin: 3em 0;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.MainHeader .MainHeader__subtitle {
+  color: var(--color-blue-light);
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.MainHeader .MainHeader__buttonContainer {
+  padding: 1.2em 2em;
+  border-radius: 7em;
+  border: var(--border-button);
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+
+.MainHeader .MainHeader__buttonText {
+  color: white;
+}
+
+.MainHeader .MainHeader__buttonIcon {
+  font-size: var(--icon-xlg);
+  margin-right: 0.5em;
+}
+
+.MainHeader .MainHeader__scrollDownIcon {
+  color: var(--color-dark-green);
+  font-size: var(--icon-lg);
+  position: absolute;
+  bottom: 0;
+}
+
+.MainHeader .MainHeader__lightImgContainer {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  user-select: none;
+}
+
+.MainHeader .MainHeader__lightImgContainer .MainHeader__lightImg {
+  max-width: 100vw;
+}
+
+/* Responsives */
+
+@media screen and (max-width: 768px) {
+  .MainHeader .MainHeader__subtitle {
+    font-size: 1.5em;
+  }
+}
