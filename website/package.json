@@ -13,6 +13,7 @@
     "gatsby-plugin-sharp": "^2.2.21",
     "gatsby-source-filesystem": "^2.1.22",
     "gatsby-transformer-sharp": "^2.2.14",
+    "gh-pages": "^2.1.1",
     "gsap": "^2.1.3",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
