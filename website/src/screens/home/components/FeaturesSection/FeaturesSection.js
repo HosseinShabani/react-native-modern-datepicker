@@ -27,7 +27,7 @@ const GettingStarted = () => {
   return (
     <article className="GettingStarted">
       <h2 className="-title">Getting started</h2>
-      <p className="-description">Welcome to react-native-calendar-modern-datepicker!</p>
+      <p className="-description">Welcome to react-native-modern-datepicker!</p>
       <ol>
         <li>
           <p className="-description">
