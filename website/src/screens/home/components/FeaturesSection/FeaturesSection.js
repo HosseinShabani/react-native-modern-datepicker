@@ -5,13 +5,13 @@ import './FeaturesSection.css';
 import {GuideCard} from '../../../../components';
 import {FEATURES} from '../../../../constants';
 
-const Feature = ({title, description, code, file, isVideo}) => {
+const Feature = ({title, description, code, file, isVideo, poster}) => {
   return (
     <article className="Feature">
       <GuideCard title={title} description={description} code={code} />
       <div className="Feature__fileContainer">
         {isVideo ? (
-          <video loop muted playsinline autoplay>
+          <video loop muted playsinline autoplay poster={poster}>
             <source src={file} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
