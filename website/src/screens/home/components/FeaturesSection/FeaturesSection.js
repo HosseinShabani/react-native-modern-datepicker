@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 //local
 import './FeaturesSection.css';
 import {GuideCard} from '../../../../components';
 import {FEATURES} from '../../../../constants';
 
-const Feature = ({title, description, code, file}) => {
+const Feature = ({title, description, code, file, isVideo}) => {
   return (
     <article className="Feature">
       <GuideCard title={title} description={description} code={code} />
-      <div className="Feature__gifContainer">
-        <img src={file} alt={title} />
+      <div className="Feature__fileContainer">
+        {isVideo ? (
+          <video loop muted playsinline autoplay>
+            <source src={file} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img src={file} alt={title} />
+        )}
       </div>
     </article>
   );
@@ -51,6 +58,12 @@ const GettingStarted = () => {
 };
 
 const FeaturesSection = () => {
+  //Video tag autoplay bug
+  useEffect(() => {
+    const videos = [...document.querySelectorAll('video')];
+    videos.forEach(video => video.play());
+  }, []);
+
   return (
     <section className="FeaturesSection">
       <div className="container FeaturesSection__container">
