@@ -2,13 +2,13 @@ export const INSTALLATION_CODE = `
   yarn add react-native-modern-datepicker
 //or if you prefer npm
 npm install react-native-modern-datepicker --save
-`
+`;
 
 export const EXAMPLE_PROJECT_CLONE_CODE = `
 $ git clone git@github.com:HosseinShabani/react-native-modern-datepicker.git
 $ cd playground && yarn
 $ react-native run-ios //or run-android
-`
+`;
 export const BASIC_USAGE_CODE = `
 import React, { useState } from 'react';
 import DatePicker from 'react-native-modern-datepicker';
@@ -22,7 +22,7 @@ const BasicUsage = () => {
     />
   );
 };
-`
+`;
 export const JALAAI_EXAMPLE_CODE = `
 import React from 'react';
 import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker';
@@ -39,7 +39,7 @@ const JalaaliExample = () => {
     />
   );
 };
-`
+`;
 
 export const MIN_MAX_EXAMPLE_CODE = `
 import React from 'react';
@@ -54,7 +54,7 @@ const MinMaxExample = () => {
     />
   );
 };
-`
+`;
 
 export const TIME_PICKER_EXAMPLE = `
 import React, { useState } from 'react';
@@ -71,7 +71,7 @@ const TimePickerExample = () => {
     />
   );
 };
-`
+`;
 export const MONTH_YEAR_EXAMPLE = `
 import React, { useState } from 'react';
 import DatePicker from 'react-native-modern-datepicker';
@@ -87,7 +87,7 @@ const MonthYearExample = () => {
     />
   );
 };
-`
+`;
 
 export const CUSTOMIZATION_EXAMPLE = `
 import React from 'react';
@@ -113,7 +113,7 @@ const FullUsageExample = () => {
     />
   );
 };
-`
+`;
 
 export const UTILS_CODE = `
 import { getToday, getFormatedDate } from 'react-native-modern-datepicker';
@@ -123,4 +123,4 @@ getToday(); // returns today's date.. e.g: 2019/10/12
 getFormatedDate(new Date(), "YYYY/MM/DD h:m"); 
 getFormatedDate(timestamp, "jYYYY/jMM/jDD h:m"); //for jalaali
 
-`
+`;

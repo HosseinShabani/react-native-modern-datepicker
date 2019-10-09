@@ -1,2 +1,2 @@
-export * from "./FeaturesSection"
-export * from "./PropsSection"
+export * from './FeaturesSection';
+export * from './PropsSection';

@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
 //local
-import "./Footer.css"
-import { FOOTER_SOCIAL_MEDIA } from "../../constants"
+import './Footer.css';
+import {FOOTER_SOCIAL_MEDIA} from '../../constants';
 
 const Footer = () => {
   return (
@@ -34,15 +34,14 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Star HosseinShabani/react-native-modern-datepicker on GitHub"
-            className="Footer__starBtn"
-          >
+            className="Footer__starBtn">
             <i className="icon-star Footer__starBtnIcon"></i>
             <h2 className="-title">Star on GitHub</h2>
           </a>
         </div>
       </section>
     </footer>
-  )
-}
+  );
+};
 
-export { Footer }
+export {Footer};

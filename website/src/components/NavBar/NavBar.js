@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
 //local
-import TehranReactImg from "../../assets/images/tehranreact.svg"
-import "./NavBar.css"
+import TehranReactImg from '../../assets/images/tehranreact.svg';
+import './NavBar.css';
 
 const NavBar = () => {
   return (
@@ -25,7 +25,7 @@ const NavBar = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export { NavBar }
+export {NavBar};

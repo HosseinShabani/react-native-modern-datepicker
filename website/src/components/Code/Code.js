@@ -1,13 +1,13 @@
-import React, { useEffect } from "react"
-import Prism from "prismjs"
+import React, {useEffect} from 'react';
+import Prism from 'prismjs';
 
 //local
-import "./Code.css"
+import './Code.css';
 
-const Code = ({ isInstallation, code }) => {
+const Code = ({isInstallation, code}) => {
   useEffect(() => {
-    Prism.highlightAll()
-  }, [])
+    Prism.highlightAll();
+  }, []);
 
   if (isInstallation) {
     return (
@@ -16,8 +16,8 @@ const Code = ({ isInstallation, code }) => {
           <code className="language-js">{code.trim()}</code>
         </pre>
       </div>
-    )
+    );
   }
-}
+};
 
-export { Code }
+export {Code};
