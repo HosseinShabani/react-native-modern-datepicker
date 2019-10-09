@@ -36,7 +36,7 @@ const GettingStarted = () => {
         <li>
           <p className="-description">
             3- By default, this package inherits font-family from your project ('System'). You can
-            use custom font, See <strong>options</strong> props.
+            use your own custom font, See <strong>options</strong> prop.
           </p>
         </li>
         <li>
