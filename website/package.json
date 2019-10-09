@@ -35,7 +35,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "clean": "gatsby clean"
   },
   "repository": {
     "type": "git",
