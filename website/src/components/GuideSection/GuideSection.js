@@ -1,15 +1,11 @@
-import React from "react"
+import React from 'react';
 
 //local
-import { GuideCard } from "../"
-import {
-  INSTALLATION_CODE,
-  EXAMPLE_PROJECT_CLONE_CODE,
-  UTILS_CODE,
-} from "../../constants"
-import "./GuideSection.css"
+import {GuideCard} from '../';
+import {INSTALLATION_CODE, EXAMPLE_PROJECT_CLONE_CODE, UTILS_CODE} from '../../constants';
+import './GuideSection.css';
 
-const GuideSection = ({ type }) => {
+const GuideSection = ({type}) => {
   const GUIDES = {
     installation: (
       <>
@@ -32,13 +28,13 @@ const GuideSection = ({ type }) => {
         code={UTILS_CODE}
       />
     ),
-  }
+  };
 
   return (
     <div className={`GuideSection -${type}`}>
       <div className="container GuideSection__container">{GUIDES[type]}</div>
     </div>
-  )
-}
+  );
+};
 
-export { GuideSection }
+export {GuideSection};

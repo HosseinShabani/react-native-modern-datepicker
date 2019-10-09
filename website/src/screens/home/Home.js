@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
 //local
-import { Header, Footer, SEO, GuideSection } from "../../components"
-import { FeaturesSection, PropsSection } from "./components"
+import {Header, Footer, SEO, GuideSection} from '../../components';
+import {FeaturesSection, PropsSection} from './components';
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
       <GuideSection type="utils" />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -5,15 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import {useStaticQuery, graphql} from 'gatsby';
 
-import logoFavIcon from "../assets/images/favicon.png"
+import logoFavIcon from '../assets/images/favicon.png';
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function SEO({description, lang, meta, title}) {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
@@ -24,10 +24,10 @@ function SEO({ description, lang, meta, title }) {
           }
         }
       }
-    `
-  )
+    `,
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -43,12 +43,11 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content:
-            "http://tehranreact.ir/public/react-native-modern-datepicker.jpg",
+          content: 'http://tehranreact.ir/public/react-native-modern-datepicker.jpg',
         },
         {
           property: `og:url`,
-          content: "",
+          content: '',
         },
         {
           property: `og:type`,
@@ -72,35 +71,33 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image:src`,
-          content:
-            "http://tehranreact.ir/public/react-native-modern-datepicker.jpg",
+          content: 'http://tehranreact.ir/public/react-native-modern-datepicker.jpg',
         },
         {
-          name: "keywords",
+          name: 'keywords',
           content: `react, react-native, react-native-datepicker, datepicker, calendar, react-native-calendar, react-native-calendars, react-native-persian-calendar, react-native-jalaali-calendar, time-picker, react-native-time-picker, month-picker, react-native-month-picker, persian, jalaali, react-native-jalaali, persian-calendar, customizable-datepicker`,
         },
         {
-          name: "theme-color",
-          content: "#05030e",
+          name: 'theme-color',
+          content: '#05030e',
         },
-      ].concat(meta)}
-    >
+      ].concat(meta)}>
       <link rel="shortcut icon" href={logoFavIcon} />
     </Helmet>
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;

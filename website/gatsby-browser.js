@@ -5,7 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-import "./src/styles/style.css"
+import './src/styles/style.css';
 
-import CSSPlugin from "gsap/CSSPlugin"
-const C = CSSPlugin // eslint-disable-line
+import CSSPlugin from 'gsap/CSSPlugin';
+const C = CSSPlugin; // eslint-disable-line

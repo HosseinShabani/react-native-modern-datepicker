@@ -1,32 +1,30 @@
-import React from "react"
-import classNames from "classnames"
+import React from 'react';
+import classNames from 'classnames';
 
 //local
-import "./Table.css"
+import './Table.css';
 
-const Table = ({ headerData, data }) => {
-  const getHeaderTitleIdx = title =>
-    headerData.findIndex(item => item === title)
+const Table = ({headerData, data}) => {
+  const getHeaderTitleIdx = title => headerData.findIndex(item => item === title);
 
   return (
     <div className="TableWrapper">
       <article className="Table">
         <div className="Table__row -header">
           {headerData.map((item, index) => {
-            const descIndex = getHeaderTitleIdx("Description")
-            const typeIndex = getHeaderTitleIdx("Type")
+            const descIndex = getHeaderTitleIdx('Description');
+            const typeIndex = getHeaderTitleIdx('Type');
 
             return (
               <div
-                className={classNames("Table__field", {
-                  "-large": index === descIndex,
-                  "-small": index === typeIndex,
+                className={classNames('Table__field', {
+                  '-large': index === descIndex,
+                  '-small': index === typeIndex,
                 })}
-                key={index}
-              >
+                key={index}>
                 <h2 className="Table__fieldText">{item}</h2>
               </div>
-            )
+            );
           })}
         </div>
         {data.map((item, index) => (
@@ -47,7 +45,7 @@ const Table = ({ headerData, data }) => {
         ))}
       </article>
     </div>
-  )
-}
+  );
+};
 
-export { Table }
+export {Table};

@@ -6,13 +6,13 @@
 
 // You can delete this file if you're not using it
 
-const path = require(`path`)
+const path = require(`path`);
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  const homeTemplate = path.resolve(`src/screens/home/Home.js`)
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions;
+  const homeTemplate = path.resolve(`src/screens/home/Home.js`);
   return createPage({
-    path: "/",
+    path: '/',
     component: homeTemplate,
-  })
-}
+  });
+};
