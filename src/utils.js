@@ -57,13 +57,13 @@ const gregorianConfigs = {
 };
 
 class utils {
-  constructor({minimumDate, maximumDate, isGregorian, mode}) {
+  constructor({minimumDate, maximumDate, isGregorian,gregorianConfigs: gregorianConfigsProps = {} , mode}) {
     this.data = {
       minimumDate,
       maximumDate,
       isGregorian,
     };
-    this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
+    this.config = isGregorian ? {...gregorianConfigs, ...gregorianConfigsProps} : jalaaliConfigs;
     if (mode === 'time' || mode === 'datepicker') {
       this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
     }
