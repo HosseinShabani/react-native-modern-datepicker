@@ -45,6 +45,7 @@ const DatePicker = props => {
   const calendarUtils = new utils(props);
   const contextValue = {
     ...props,
+    reverse: props.reverse === 'unset' ? !props.isGregorian : props.reverse,
     options: {...options, ...props.options},
     utils: calendarUtils,
     state: useReducer(reducer, {
@@ -136,6 +137,8 @@ DatePicker.defaultProps = {
   selectorEndingYear: 3000,
   disableDateChange: false,
   isGregorian: true,
+  configs: {},
+  reverse: 'unset',
   options: {},
   mode: 'datepicker',
   minuteInterval: 5,
@@ -155,6 +158,8 @@ DatePicker.propTypes = {
   selectorEndingYear: PropTypes.number,
   disableDateChange: PropTypes.bool,
   isGregorian: PropTypes.bool,
+  configs: PropTypes.object,
+  reverse: PropTypes.oneOf([true, false, 'unset']),
   options: PropTypes.shape(optionsShape),
   mode: PropTypes.oneOf(modeArray),
   minuteInterval: PropTypes.oneOf(minuteIntervalArray),

@@ -20,7 +20,7 @@ const Calendar = () => {
   return (
     <View style={style.container}>
       <Header changeMonth={changeMonthAnimation} />
-      <View style={style.daysName}>
+      <View style={[style.daysName, utils.flexDirection]}>
         {utils.config.dayNamesShort.map(item => (
           <Text key={item} style={style.daysNameText}>
             {item}
@@ -46,7 +46,6 @@ const styles = theme =>
       paddingBottom: 10,
       marginBottom: 0,
       alignItems: 'center',
-      flexDirection: 'row-reverse',
       justifyContent: 'space-around',
       borderBottomColor: theme.borderColor,
       borderBottomWidth: 1,
