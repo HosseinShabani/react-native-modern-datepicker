@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {View, TouchableOpacity, Text, Image, StyleSheet, Animated} from 'react-native';
+import {View, TouchableOpacity, Text, Image, StyleSheet, Animated, I18nManager} from 'react-native';
 
 import {useCalendar} from '../DatePicker';
 
@@ -13,7 +13,6 @@ const Header = ({changeMonth}) => {
     minimumDate,
     maximumDate,
     isGregorian,
-    reverse,
     mode,
   } = useCalendar();
   const [mainState, setMainState] = state;
@@ -25,6 +24,11 @@ const Header = ({changeMonth}) => {
   ] = utils.useMonthAnimation(mainState.activeDate, options.headerAnimationDistance, () =>
     setDisableChange(false),
   );
+  const prevDisable =
+    disableDateChange || (minimumDate && utils.checkArrowMonthDisabled(mainState.activeDate, true));
+  const nextDisable =
+    disableDateChange ||
+    (maximumDate && utils.checkArrowMonthDisabled(mainState.activeDate, false));
 
   const onChangeMonth = type => {
     if (disableChange) return;
@@ -41,28 +45,28 @@ const Header = ({changeMonth}) => {
     changeMonth(type);
   };
 
-  const prevDisable =
-    disableDateChange || (minimumDate && utils.checkArrowMonthDisabled(mainState.activeDate, true));
-  const nextDisable =
-    disableDateChange ||
-    (maximumDate && utils.checkArrowMonthDisabled(mainState.activeDate, false));
-  const flexDirectionStyle = {flexDirection: reverse? 'row-reverse': 'row'};
   return (
-    <View style={[style.container, flexDirectionStyle ]}>
+    <View style={[style.container, I18nManager.isRTL && style.reverseContainer]}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() => !prevDisable && onChangeMonth('PREVIOUS')}
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, !reverse?style.leftArrow:null, prevDisable && style.disableArrow]}
+          style={[style.arrow, prevDisable && style.disableArrow]}
         />
       </TouchableOpacity>
       <View style={style.monthYearContainer}>
-        <Animated.View style={[style.monthYear, shownAnimation, style.activeMonthYear]}>
+        <Animated.View
+          style={[
+            style.monthYear,
+            shownAnimation,
+            style.activeMonthYear,
+            I18nManager.isRTL && style.reverseMonthYear,
+          ]}>
           <TouchableOpacity
             activeOpacity={0.7}
-            style={[style.centerWrapper, style.monthYearWrapper,flexDirectionStyle]}
+            style={[style.centerWrapper, style.monthYearWrapper, utils.flexDirection]}
             onPress={() =>
               !disableDateChange &&
               setMainState({
@@ -79,7 +83,10 @@ const Header = ({changeMonth}) => {
           {mode === 'datepicker' && (
             <TouchableOpacity
               activeOpacity={0.7}
-              style={[style.centerWrapper, style.time]}
+              style={[
+                style.centerWrapper,
+                {marginRight: I18nManager.isRTL ? 0 : 5, marginLeft: I18nManager.isRTL ? 5 : 0},
+              ]}
               onPress={() =>
                 setMainState({
                   type: 'toggleTime',
@@ -91,7 +98,13 @@ const Header = ({changeMonth}) => {
             </TouchableOpacity>
           )}
         </Animated.View>
-        <Animated.View style={[style.monthYear, hiddenAnimation, flexDirectionStyle]}>
+        <Animated.View
+          style={[
+            style.monthYear,
+            hiddenAnimation,
+            utils.flexDirection,
+            I18nManager.isRTL && style.reverseMonthYear,
+          ]}>
           <Text style={style.headerText}>{utils.getMonthYearText(lastDate).split(' ')[0]}</Text>
           <Text style={style.headerText}>{utils.getMonthYearText(lastDate).split(' ')[1]}</Text>
           {mode === 'datepicker' && (
@@ -107,7 +120,7 @@ const Header = ({changeMonth}) => {
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, reverse?style.leftArrow:null, nextDisable && style.disableArrow]}
+          style={[style.arrow, style.leftArrow, nextDisable && style.disableArrow]}
         />
       </TouchableOpacity>
     </View>
@@ -118,7 +131,10 @@ const styles = theme =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
-      //flexDirection: 'row-reverse',
+      flexDirection: 'row-reverse',
+    },
+    reverseContainer: {
+      flexDirection: 'row',
     },
     arrowWrapper: {
       padding: 20,
@@ -154,12 +170,14 @@ const styles = theme =>
       alignItems: 'center',
       flexDirection: 'row-reverse',
     },
+    reverseMonthYear: {
+      flexDirection: 'row',
+    },
     activeMonthYear: {
       zIndex: 999,
     },
     monthYearWrapper: {
       alignItems: 'center',
-      flexDirection: 'row-reverse',
     },
     headerText: {
       fontSize: theme.textHeaderFontSize,

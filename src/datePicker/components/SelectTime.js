@@ -1,5 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, StyleSheet, Text, Animated, FlatList, Easing, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Animated,
+  FlatList,
+  Easing,
+  TouchableOpacity,
+  I18nManager,
+} from 'react-native';
 
 import {useCalendar} from '../DatePicker';
 
@@ -31,9 +40,9 @@ const TimeScroller = ({title, data, onChange}) => {
   const renderItem = ({item, index}) => {
     const makeAnimated = (a, b, c) => {
       return {
-        inputRange: [...data.map((x, i) => i * itemSize)],
+        inputRange: [...data.map((_, i) => i * itemSize)],
         outputRange: [
-          ...data.map((x, i) => {
+          ...data.map((_, i) => {
             const center = i + 2;
             if (center === index) {
               return a;
@@ -56,6 +65,9 @@ const TimeScroller = ({title, data, onChange}) => {
             transform: [
               {
                 scale: scrollAnimatedValue.interpolate(makeAnimated(1.2, 0.9, 0.8)),
+              },
+              {
+                scaleX: I18nManager.isRTL ? -1 : 1,
               },
             ],
           },
@@ -80,13 +92,23 @@ const TimeScroller = ({title, data, onChange}) => {
         onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollAnimatedValue}}}], {
           useNativeDriver: true,
         })}
-        data={data}
+        data={I18nManager.isRTL ? data.reverse() : data}
         onMomentumScrollEnd={() => {
           const index = Math.round(active.current / itemSize);
           onChange(data[index + 2]);
         }}
-        keyExtractor={(x, i) => String(i)}
+        keyExtractor={(_, i) => String(i)}
         renderItem={renderItem}
+        inverted={I18nManager.isRTL}
+        contentContainerStyle={
+          I18nManager.isRTL && {
+            transform: [
+              {
+                scaleX: -1,
+              },
+            ],
+          }
+        }
       />
     </View>
   );

@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react';
-import {Animated, Easing} from 'react-native';
+import {Animated, Easing, I18nManager} from 'react-native';
 import moment from 'moment-jalaali';
 
 const m = moment();
@@ -57,16 +57,22 @@ const gregorianConfigs = {
 };
 
 class utils {
-  constructor({minimumDate, maximumDate, isGregorian,gregorianConfigs: gregorianConfigsProps = {} , mode}) {
+  constructor({minimumDate, maximumDate, isGregorian, mode, reverse, configs}) {
     this.data = {
       minimumDate,
       maximumDate,
       isGregorian,
+      reverse: reverse === 'unset' ? !isGregorian : reverse,
     };
-    this.config = isGregorian ? {...gregorianConfigs, ...gregorianConfigsProps} : jalaaliConfigs;
+    this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
+    this.config = {...this.config, ...configs};
     if (mode === 'time' || mode === 'datepicker') {
       this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
     }
+  }
+
+  get flexDirection() {
+    return {flexDirection: this.data.reverse ? (I18nManager.isRTL ? 'row' : 'row-reverse') : 'row'};
   }
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
