@@ -5,7 +5,7 @@ import {Header, Days} from '.';
 import {useCalendar} from '../DatePicker';
 
 const Calendar = () => {
-  const {options, state, utils, onSelectedChange} = useCalendar();
+  const {options, state, utils, reverse, onSelectedChange} = useCalendar();
   const [mainState] = state;
   const style = styles(options);
   const [{shownAnimation}, changeMonthAnimation] = utils.useMonthAnimation(
@@ -20,7 +20,7 @@ const Calendar = () => {
   return (
     <View style={style.container}>
       <Header changeMonth={changeMonthAnimation} />
-      <View style={style.daysName}>
+      <View style={[style.daysName, {flexDirection: reverse? 'row-reverse': 'row'}]}>
         {utils.config.dayNamesShort.map(item => (
           <Text key={item} style={style.daysNameText}>
             {item}

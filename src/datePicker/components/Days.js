@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useCalendar} from '../DatePicker';
 
 const Days = () => {
-  const {options, state, utils, onDateChange} = useCalendar();
+  const {options, state, utils, reverse, onDateChange} = useCalendar();
   const [mainState, setMainState] = state;
   const [itemSize, setItemSize] = useState(0);
   const style = styles(options);
@@ -24,7 +24,7 @@ const Days = () => {
   };
 
   return (
-    <View style={style.container} onLayout={changeItemHeight}>
+    <View style={[style.container,  {flexDirection: reverse? 'row-reverse': 'row'}]} onLayout={changeItemHeight}>
       {days.map((day, n) => (
         <View
           key={n}

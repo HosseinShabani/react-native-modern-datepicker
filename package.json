@@ -1,6 +1,6 @@
 {
   "name": "react-native-modern-datepicker",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.6",
   "description": "A customizable calendar, time & month picker for React Native (including Persian Jalaali calendar & locale)",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "src"
   ],
   "author": "Hossein Shabani",
-  "homepage": "https://github.com/HosseinShabani/react-native-modern-datepicker",
+  "homepage": "https://hosseinshabani.github.io/react-native-modern-datepicker/",
   "repository": {
     "type": "git",
     "url": "https://github.com/HosseinShabani/react-native-modern-datepicker.git"

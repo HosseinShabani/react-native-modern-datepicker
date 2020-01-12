@@ -13,6 +13,7 @@ const Header = ({changeMonth}) => {
     minimumDate,
     maximumDate,
     isGregorian,
+    reverse,
     mode,
   } = useCalendar();
   const [mainState, setMainState] = state;
@@ -45,23 +46,23 @@ const Header = ({changeMonth}) => {
   const nextDisable =
     disableDateChange ||
     (maximumDate && utils.checkArrowMonthDisabled(mainState.activeDate, false));
-
+  const flexDirectionStyle = {flexDirection: reverse? 'row-reverse': 'row'};
   return (
-    <View style={style.container}>
+    <View style={[style.container, flexDirectionStyle ]}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() => !prevDisable && onChangeMonth('PREVIOUS')}
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, prevDisable && style.disableArrow]}
+          style={[style.arrow, !reverse?style.leftArrow:null, prevDisable && style.disableArrow]}
         />
       </TouchableOpacity>
       <View style={style.monthYearContainer}>
         <Animated.View style={[style.monthYear, shownAnimation, style.activeMonthYear]}>
           <TouchableOpacity
             activeOpacity={0.7}
-            style={[style.centerWrapper, style.monthYearWrapper]}
+            style={[style.centerWrapper, style.monthYearWrapper,flexDirectionStyle]}
             onPress={() =>
               !disableDateChange &&
               setMainState({
@@ -90,7 +91,7 @@ const Header = ({changeMonth}) => {
             </TouchableOpacity>
           )}
         </Animated.View>
-        <Animated.View style={[style.monthYear, hiddenAnimation]}>
+        <Animated.View style={[style.monthYear, hiddenAnimation, flexDirectionStyle]}>
           <Text style={style.headerText}>{utils.getMonthYearText(lastDate).split(' ')[0]}</Text>
           <Text style={style.headerText}>{utils.getMonthYearText(lastDate).split(' ')[1]}</Text>
           {mode === 'datepicker' && (
@@ -106,7 +107,7 @@ const Header = ({changeMonth}) => {
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, style.leftArrow, nextDisable && style.disableArrow]}
+          style={[style.arrow, reverse?style.leftArrow:null, nextDisable && style.disableArrow]}
         />
       </TouchableOpacity>
     </View>
@@ -117,7 +118,7 @@ const styles = theme =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
-      flexDirection: 'row-reverse',
+      //flexDirection: 'row-reverse',
     },
     arrowWrapper: {
       padding: 20,

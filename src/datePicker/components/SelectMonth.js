@@ -18,6 +18,7 @@ const SelectMonth = () => {
     state,
     utils,
     isGregorian,
+    reverse,
     selectorStartingYear,
     selectorEndingYear,
     mode,
@@ -33,7 +34,7 @@ const SelectMonth = () => {
   const currentMonth = Number(mainState.activeDate.split('/')[1]);
   const prevDisable = maximumDate && utils.checkYearDisabled(Number(utils.toEnglish(year)), true);
   const nextDisable = minimumDate && utils.checkYearDisabled(Number(utils.toEnglish(year)), false);
-
+  const flexDirectionStyle = {flexDirection: reverse? 'row-reverse': 'row'};
   useEffect(() => {
     mainState.monthOpen && setShow(true);
     Animated.timing(openAnimation, {
@@ -107,14 +108,14 @@ const SelectMonth = () => {
 
   return show ? (
     <Animated.View style={containerStyle}>
-      <View style={style.header}>
+      <View style={[style.header,flexDirectionStyle]}>
         <TouchableOpacity
           activeOpacity={0.7}
           style={style.arrowWrapper}
           onPress={() => !nextDisable && onSelectYear(-1)}>
           <Image
             source={require('../../assets/arrow.png')}
-            style={[style.arrow, nextDisable && style.disableArrow]}
+            style={[style.arrow, !reverse?style.leftArrow:null, nextDisable && style.disableArrow]}
           />
         </TouchableOpacity>
         <TextInput
@@ -136,12 +137,12 @@ const SelectMonth = () => {
           onPress={() => !prevDisable && onSelectYear(+1)}>
           <Image
             source={require('../../assets/arrow.png')}
-            style={[style.arrow, style.arrowLeft, prevDisable && style.disableArrow]}
+            style={[style.arrow, reverse?style.leftArrow:null, prevDisable && style.disableArrow]}
           />
         </TouchableOpacity>
       </View>
 
-      <View style={style.monthList}>
+      <View style={[style.monthList, flexDirectionStyle]}>
         {[...Array(12).keys()].map(item => {
           const disabled = utils.checkSelectMonthDisabled(mainState.activeDate, item);
           return (
@@ -231,7 +232,7 @@ const styles = theme =>
       tintColor: theme.mainColor,
       margin: 2,
     },
-    arrowLeft: {
+    leftArrow: {
       transform: [
         {
           rotate: '180deg',
