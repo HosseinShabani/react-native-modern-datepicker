@@ -40,7 +40,7 @@
     "customizable-datepicker"
   ],
   "dependencies": {
-    "moment-jalaali": "^0.8.3",
+    "moment-jalaali": "^0.9.2",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {

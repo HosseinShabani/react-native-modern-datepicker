@@ -171,19 +171,19 @@ class utils {
     return [
       ...new Array(dayOfMonth),
       ...[...new Array(currentMonthDays)].map((i, n) => {
-        const dateString = this.getFormated(isGregorian ? date.date(n + 1) : date.jDate(n + 1));
+        const thisDay = isGregorian ? date.date(n + 1) : date.jDate(n + 1);
         let disabled = false;
         if (minimumDate) {
-          disabled = this.getDate(dateString) < this.getDate(minimumDate);
+          disabled = thisDay < this.getDate(minimumDate);
         }
         if (maximumDate && !disabled) {
-          disabled = this.getDate(dateString) > this.getDate(maximumDate);
+          disabled = thisDay > this.getDate(maximumDate);
         }
 
         return {
           dayString: this.toPersianNumber(n + 1),
           day: n + 1,
-          date: dateString,
+          date: this.getFormated(isGregorian ? date.date(n + 1) : date.jDate(n + 1)),
           disabled,
         };
       }),

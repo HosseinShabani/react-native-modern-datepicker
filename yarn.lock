@@ -1227,9 +1227,10 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment-jalaali@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/moment-jalaali/-/moment-jalaali-0.8.3.tgz#93d5de9c274be0221fabd3c3f2b7efc3c51e9016"
+moment-jalaali@^0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/moment-jalaali/-/moment-jalaali-0.9.2.tgz#1c67917aa13003db19c070ea4118945fcb626250"
+  integrity sha512-Z7dgu6NFnq9MhbAtwj0x7tHFXm+rzSu5Ju7Fc3RloqFQ/3zSJh8kuzxNdAp7cgMF/s/ydob+fAEJvQds/hz25g==
   dependencies:
     jalaali-js "^1.1.0"
     moment "^2.22.2"
