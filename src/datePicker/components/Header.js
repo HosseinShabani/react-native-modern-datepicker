@@ -30,7 +30,7 @@ const Header = ({changeMonth}) => {
     disableDateChange ||
     (maximumDate && utils.checkArrowMonthDisabled(mainState.activeDate, false));
 
-  const onChangeMonth = type => {
+  const onChangeMonth = (type) => {
     if (disableChange) return;
     setDisableChange(true);
     changeMonthAnimation(type);
@@ -49,11 +49,11 @@ const Header = ({changeMonth}) => {
     <View style={[style.container, I18nManager.isRTL && style.reverseContainer]}>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => !prevDisable && onChangeMonth('PREVIOUS')}
+        onPress={() => !nextDisable && onChangeMonth('NEXT')}
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, prevDisable && style.disableArrow]}
+          style={[style.arrow, nextDisable && style.disableArrow]}
         />
       </TouchableOpacity>
       <View style={style.monthYearContainer}>
@@ -116,18 +116,18 @@ const Header = ({changeMonth}) => {
       </View>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => !nextDisable && onChangeMonth('NEXT')}
+        onPress={() => !prevDisable && onChangeMonth('PREVIOUS')}
         style={style.arrowWrapper}>
         <Image
           source={require('../../assets/arrow.png')}
-          style={[style.arrow, style.leftArrow, nextDisable && style.disableArrow]}
+          style={[style.arrow, style.leftArrow, prevDisable && style.disableArrow]}
         />
       </TouchableOpacity>
     </View>
   );
 };
 
-const styles = theme =>
+const styles = (theme) =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
