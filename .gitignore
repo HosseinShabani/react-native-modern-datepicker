@@ -9,3 +9,6 @@ dist
 
 # Dependency directory
 node_modules
+
+# Ignore junk files
+.DS_Store
