@@ -15,7 +15,7 @@ const Days = () => {
       type: 'set',
       selectedDate: date,
     });
-    onDateChange(utils.getFormated(utils.getDate(date), 'dateFormat'));
+    onDateChange(date);
   };
 
   const changeItemHeight = ({nativeEvent}) => {
