@@ -1,5 +1,5 @@
-import {useRef, useState} from 'react';
-import {Animated, Easing, I18nManager} from 'react-native';
+import { useRef, useState } from 'react';
+import { Animated, Easing, I18nManager } from 'react-native';
 import moment from 'moment-jalaali';
 
 const m = moment();
@@ -57,7 +57,7 @@ const gregorianConfigs = {
 };
 
 class utils {
-  constructor({minimumDate, maximumDate, isGregorian, mode, reverse, configs}) {
+  constructor({ minimumDate, maximumDate, isGregorian, mode, reverse, configs }) {
     this.data = {
       minimumDate,
       maximumDate,
@@ -65,14 +65,14 @@ class utils {
       reverse: reverse === 'unset' ? !isGregorian : reverse,
     };
     this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
-    this.config = {...this.config, ...configs};
+    this.config = { ...this.config, ...configs };
     if (mode === 'time' || mode === 'datepicker') {
       this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
     }
   }
 
   get flexDirection() {
-    return {flexDirection: this.data.reverse ? (I18nManager.isRTL ? 'row' : 'row-reverse') : 'row'};
+    return { flexDirection: this.data.reverse ? (I18nManager.isRTL ? 'row' : 'row-reverse') : 'row' };
   }
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
@@ -84,6 +84,7 @@ class utils {
   getToday = () => this.getFormated(m, 'dateFormat');
 
   getMonthName = (month) => this.config.monthNames[month];
+
 
   toPersianNumber = (value) => {
     const {isGregorian} = this.data;
@@ -101,6 +102,7 @@ class utils {
 
   getDate = (time) => moment(time, this.config.selectedFormat);
 
+
   getMonthYearText = (time) => {
     const {isGregorian} = this.data;
     const date = this.getDate(time);
@@ -108,6 +110,7 @@ class utils {
     const month = this.getMonthName(isGregorian ? date.month() : date.jMonth());
     return `${month} ${year}`;
   };
+
 
   checkMonthDisabled = (time) => {
     const {minimumDate, maximumDate, isGregorian} = this.data;
@@ -125,7 +128,7 @@ class utils {
   };
 
   checkArrowMonthDisabled = (time, next) => {
-    const {isGregorian} = this.data;
+    const { isGregorian } = this.data;
     const date = this.getDate(time);
     return this.checkMonthDisabled(
       this.getFormated(date.add(next ? -1 : 1, isGregorian ? 'month' : 'jMonth')),
@@ -133,7 +136,7 @@ class utils {
   };
 
   checkYearDisabled = (year, next) => {
-    const {minimumDate, maximumDate, isGregorian} = this.data;
+    const { minimumDate, maximumDate, isGregorian } = this.data;
     const y = isGregorian
       ? this.getDate(next ? maximumDate : minimumDate).year()
       : this.getDate(next ? maximumDate : minimumDate).jYear();
@@ -141,14 +144,14 @@ class utils {
   };
 
   checkSelectMonthDisabled = (time, month) => {
-    const {isGregorian} = this.data;
+    const { isGregorian } = this.data;
     const date = this.getDate(time);
     const dateWithNewMonth = isGregorian ? date.month(month) : date.jMonth(month);
     return this.checkMonthDisabled(this.getFormated(dateWithNewMonth));
   };
 
   validYear = (time, year) => {
-    const {minimumDate, maximumDate, isGregorian} = this.data;
+    const { minimumDate, maximumDate, isGregorian } = this.data;
     const date = isGregorian ? this.getDate(time).year(year) : this.getDate(time).jYear(year);
     let validDate = this.getFormated(date);
     if (minimumDate && date < this.getDate(minimumDate)) {
@@ -160,13 +163,14 @@ class utils {
     return validDate;
   };
 
-  getMonthDays = (time) => {
-    const {minimumDate, maximumDate, isGregorian} = this.data;
-    let date = this.getDate(time);
+  getMonthDays = time => {
+    const { minimumDate, maximumDate, isGregorian } = this.data;
+    const date = this.getDate(time);
+
     const currentMonthDays = isGregorian
       ? date.daysInMonth()
       : moment.jDaysInMonth(date.jYear(), date.jMonth());
-    const firstDay = isGregorian ? date.date(1) : date.jDate(1);
+    const firstDay = isGregorian ? this.getDate(time).date(1) : (moment.jIsLeapYear(date.jYear() - 1) && date.jMonth() === 0) ? date.jDate(1).add(1, 'day') : date.jDate(1);
     const dayOfMonth = (firstDay.day() + Number(!isGregorian)) % 7;
     return [
       ...new Array(dayOfMonth),
@@ -235,8 +239,8 @@ class utils {
       ],
     };
 
-    return [{lastDate, shownAnimation, hiddenAnimation}, changeMonthAnimation];
+    return [{ lastDate, shownAnimation, hiddenAnimation }, changeMonthAnimation];
   };
 }
 
-export {utils};
+export { utils };
