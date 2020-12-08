@@ -9,11 +9,11 @@
   "files": [
     "src"
   ],
-  "author": "Hossein Shabani",
-  "homepage": "https://hosseinshabani.github.io/react-native-modern-datepicker/",
+  "author": "Adam issam",
+  "homepage": "https://github.com/adamissam/react-native-modern-datepicker.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HosseinShabani/react-native-modern-datepicker.git"
+    "url": "https://github.com/adamissam/react-native-modern-datepicker.git"
   },
   "bugs": {
     "url": "https://github.com/HosseinShabani/react-native-modern-datepicker/issues"

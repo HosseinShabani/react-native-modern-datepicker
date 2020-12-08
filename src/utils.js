@@ -30,28 +30,28 @@ const jalaaliConfigs = {
   timeClose: 'بستن',
 };
 const gregorianConfigs = {
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+  dayNamesShort: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
   monthNames: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'Janvier',
+    'Vévrier',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Août',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Decembre',
   ],
-  selectedFormat: 'YYYY/MM/DD',
-  dateFormat: 'YYYY/MM/DD',
-  monthYearFormat: 'YYYY MM',
+  selectedFormat: 'DD/MM/YYYY',
+  dateFormat: 'DD/MM/YYYY',
+  monthYearFormat: 'MM YYYY',
   timeFormat: 'HH:mm',
-  hour: 'Hour',
-  minute: 'Minute',
+  hour: 'Heure',
+  minute: 'Minutes',
   timeSelect: 'Select',
   timeClose: 'Close',
 };
@@ -77,7 +77,7 @@ class utils {
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
 
-  getFormatedDate = (date = new Date(), format = 'YYYY/MM/DD') => moment(date).format(format);
+  getFormatedDate = (date = new Date(), format = 'DD/MM/YYYY') => moment(date).format(format);
 
   getTime = (time) => this.getDate(time).format(this.config.timeFormat);
 
