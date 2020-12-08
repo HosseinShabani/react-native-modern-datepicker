@@ -53,7 +53,7 @@ const gregorianConfigs = {
   hour: 'Heure',
   minute: 'Minutes',
   timeSelect: 'Select',
-  timeClose: 'Close',
+  timeClose: 'Fermer',
 };
 
 class utils {
