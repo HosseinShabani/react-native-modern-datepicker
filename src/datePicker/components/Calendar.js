@@ -20,7 +20,7 @@ const Calendar = () => {
   return (
     <View style={style.container}>
       <Header changeMonth={changeMonthAnimation} />
-      <View style={[style.daysName, utils.flexDirection]}>
+      <View style={[style.daysName, utils.flexDirection, options.daysNameStyle]}>
         {utils.config.dayNamesShort.map(item => (
           <Text key={item} style={style.daysNameText}>
             {item}

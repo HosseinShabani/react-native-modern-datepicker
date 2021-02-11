@@ -146,7 +146,7 @@ const styles = (theme) =>
       width: 18,
       height: 18,
       opacity: 0.9,
-      tintColor: theme.mainColor,
+      tintColor: theme.arrowColor,
       margin: 2,
     },
     leftArrow: {

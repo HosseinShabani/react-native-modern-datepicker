@@ -19,6 +19,8 @@ const options = {
   textHeaderFontSize: 17,
   headerAnimationDistance: 100,
   daysAnimationDistance: 200,
+  arrowColor: '#61dafb',
+  daysNameStyle: undefined
 };
 
 const reducer = (state, action) => {
@@ -120,6 +122,7 @@ const optionsShape = {
   textHeaderFontSize: PropTypes.number,
   headerAnimationDistance: PropTypes.number,
   daysAnimationDistance: PropTypes.number,
+  arrowColor: PropTypes.string
 };
 const modeArray = ['datepicker', 'calendar', 'monthYear', 'time'];
 const minuteIntervalArray = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60];
