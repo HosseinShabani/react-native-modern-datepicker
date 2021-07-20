@@ -1,8 +1,9 @@
-import React, {createContext, useReducer, useContext, useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {Calendar, SelectMonth, SelectTime} from './components';
+import {useCalendar} from './calendarContext'
 import {utils} from '../utils';
 
 const options = {
@@ -32,13 +33,6 @@ const reducer = (state, action) => {
     default:
       throw new Error('Unexpected action');
   }
-};
-
-const CalendarContext = createContext();
-
-const useCalendar = () => {
-  const contextValue = useContext(CalendarContext);
-  return contextValue;
 };
 
 const DatePicker = props => {
