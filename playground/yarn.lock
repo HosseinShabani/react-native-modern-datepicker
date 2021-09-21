@@ -4173,7 +4173,7 @@ react-native-gesture-handler@^1.4.1:
     prop-types "^15.7.2"
 
 "react-native-modern-datepicker@file:..":
-  version "1.0.0-beta.9"
+  version "1.0.0-beta.91"
   dependencies:
     moment-jalaali "^0.9.2"
     prop-types "^15.7.2"
@@ -4951,8 +4951,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
