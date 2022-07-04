@@ -109,4 +109,10 @@ export const PROPS_CONST = [
     default: '{}',
     description: 'Changes date picker container style.',
   },
+  {
+    name: 'is12Hour',
+    type: 'Boolean',
+    default: 'false',
+    description: 'Changes time picker\'s hour mode to AM/PM format.',
+  },
 ];

@@ -14,8 +14,8 @@ import {useCalendar} from '../DatePicker';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
-const TimeScroller = ({title, data, onChange}) => {
-  const {options, utils} = useCalendar();
+const TimeScroller = ({title, data, onChange, isHour}) => {
+  const {options, utils, is12Hour} = useCalendar();
   const [itemSize, setItemSize] = useState(0);
   const style = styles(options);
   const scrollAnimatedValue = useRef(new Animated.Value(0)).current;
@@ -74,7 +74,12 @@ const TimeScroller = ({title, data, onChange}) => {
           style.listItem,
         ]}>
         <Text style={style.listItemText}>
-          {utils.toPersianNumber(String(item).length === 1 ? '0' + item : item)}
+          {(isHour && is12Hour)
+            ? item
+            : utils.toPersianNumber(String(item).length === 1 
+              ? '0' + item 
+              : item)
+          }
         </Text>
       </Animated.View>
     );
@@ -115,22 +120,20 @@ const TimeScroller = ({title, data, onChange}) => {
 };
 
 const SelectTime = () => {
-  const {options, state, utils, minuteInterval, mode, onTimeChange} = useCalendar();
+  const {options, state, utils, minuteInterval, mode, onTimeChange, is12Hour} = useCalendar();
+  const initialTime = {
+    minute: 0,
+    hour: is12Hour ? 1 : 0,
+  };
   const [mainState, setMainState] = state;
   const [show, setShow] = useState(false);
-  const [time, setTime] = useState({
-    minute: 0,
-    hour: 0,
-  });
+  const [time, setTime] = useState(initialTime);
   const style = styles(options);
   const openAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     show &&
-      setTime({
-        minute: 0,
-        hour: 0,
-      });
+      setTime(initialTime);
   }, [show]);
 
   useEffect(() => {
@@ -182,17 +185,37 @@ const SelectTime = () => {
     },
   ];
 
+  const handleMeridiemChange = (meridiem) => {
+    if (meridiem === 'AM' && time.hour > 12) {
+      const hour = time.hour - 12;
+      setTime({...time, hour});
+    } else if (meridiem === 'PM' && time.hour < 12) {
+      const hour = time.hour + 12;
+      setTime({...time, hour});
+    }
+  };
+
+  const hourScrollerData = is12Hour
+    ? Array.from({length: 12}, (x, i) => i + 1)
+    : Array.from({length: 24}, (x, i) => i);
+
   return show ? (
     <Animated.View style={containerStyle}>
       <TimeScroller
         title={utils.config.hour}
-        data={Array.from({length: 24}, (x, i) => i)}
+        data={hourScrollerData}
         onChange={hour => setTime({...time, hour})}
+        isHour
       />
       <TimeScroller
         title={utils.config.minute}
         data={Array.from({length: 60 / minuteInterval}, (x, i) => i * minuteInterval)}
         onChange={minute => setTime({...time, minute})}
+      />
+      <TimeScroller
+        title={utils.config.meridiem}
+        data={['AM', 'PM']}
+        onChange={handleMeridiemChange}
       />
       <View style={style.footer}>
         <TouchableOpacity style={style.button} activeOpacity={0.8} onPress={selectTime}>
