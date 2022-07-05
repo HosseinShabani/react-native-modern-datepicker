@@ -1,0 +1,1 @@
+declare module 'react-native-modern-datepicker-12';
