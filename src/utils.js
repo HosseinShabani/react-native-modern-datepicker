@@ -38,15 +38,7 @@ const jalaaliConfigs = {
   timeClose: 'بستن',
 };
 const gregorianConfigs = locale => ({
-  dayNames: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ],
+  dayNames: localizeDayNams(locale),
   dayNamesShort: localizeDayNameShort(locale),
   monthNames: localizeMonths(locale),
   selectedFormat: 'YYYY/MM/DD',
@@ -59,12 +51,85 @@ const gregorianConfigs = locale => ({
   timeClose: localizeCloseLabel(locale),
 });
 
+const localizeDayNams = locale => {
+  switch (locale) {
+    case 'es':
+      return [
+        'Domingo',
+        'Lunes',
+        'Martes',
+        'Miércoles',
+        'Jueves',
+        'Viernes',
+        'Sábado',
+      ];
+    case 'fr':
+      return [
+        'Dimanche',
+        'Lundi',
+        'Mardi',
+        'Mercredi',
+        'Jeudi',
+        'Vendredi',
+        'Samedi',
+      ];
+    case 'pt':
+      return [
+        'Domingo',
+        'Segunda-feira',
+        'Terça-feira',
+        'Quarta-feira',
+        'Quinta-feira',
+        'Sexta-feira',
+        'Sábado',
+      ];
+    case 'it':
+      return [
+        'Domenica',
+        'Lunedì',
+        'Martedì',
+        'Mercoledì',
+        'Giovedì',
+        'Venerdì',
+        'Sabato',
+      ];
+    case 'de':
+      return [
+        'Sonntag',
+        'Montag',
+        'Dienstag',
+        'Mittwoch',
+        'Donnerstag',
+        'Freitag',
+        'Samstag',
+      ];
+    default:
+      return [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+  }
+};
+
 const localizeDayNameShort = locale => {
   switch (locale) {
     case 'es':
-      return ['Do', 'Lu', 'Mr', 'Mi', 'Ju', 'Vi', 'Sa'];
+      return ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
+    case 'fr':
+      return ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'];
+    case 'pt':
+      return ['Do', 'Seg', 'Te', 'Qua', 'Qui', 'Sex', 'Sa'];
+    case 'it':
+      return ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa'];
+    case 'de':
+      return ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
     default:
-      return ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+      return ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   }
 };
 
@@ -72,6 +137,14 @@ const localizeHourLabel = locale => {
   switch (locale) {
     case 'es':
       return 'Hora';
+    case 'fr':
+      return 'Heure';
+    case 'pt':
+      return 'Hora';
+    case 'it':
+      return 'Ora';
+    case 'de':
+      return 'Stunde';
     default:
       return 'Hour';
   }
@@ -81,6 +154,14 @@ const localizeMinutesLabel = locale => {
   switch (locale) {
     case 'es':
       return 'Minutos';
+    case 'fr':
+      return 'Minutes';
+    case 'pt':
+      return 'Minutos';
+    case 'it':
+      return 'Minuti';
+    case 'de':
+      return 'Protokoll';
     default:
       return 'Minutes';
   }
@@ -90,6 +171,14 @@ const localizeSelectLabel = locale => {
   switch (locale) {
     case 'es':
       return 'Seleccionar';
+    case 'fr':
+      return 'Sélectionner';
+    case 'pt':
+      return 'Hora';
+    case 'it':
+      return 'Selezionare';
+    case 'de':
+      return 'Auswählen';
     default:
       return 'Select';
   }
@@ -99,6 +188,14 @@ const localizeCloseLabel = locale => {
   switch (locale) {
     case 'es':
       return 'Cerrar';
+    case 'fr':
+      return 'Fermer';
+    case 'pt':
+      return 'Fechar';
+    case 'it':
+      return 'Chiudere';
+    case 'de':
+      return 'Schließen';
     default:
       return 'Close';
   }
@@ -120,6 +217,66 @@ const localizeMonths = locale => {
         'Octubre',
         'Noviembre',
         'Diciembre',
+      ];
+    case 'fr':
+      return [
+        'Janvier',
+        'Février',
+        'Mars',
+        'Avril',
+        'Mai',
+        'Juin',
+        'Julliet',
+        'Août',
+        'Septembre',
+        'Octobre',
+        'Novembre',
+        'Décembre',
+      ];
+    case 'pt':
+      return [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro',
+      ];
+    case 'it':
+      return [
+        'Gennaio',
+        'Febbraio',
+        'Marzo',
+        'Aprile',
+        'Maggio',
+        'Giugno',
+        'Luglio',
+        'Agosto',
+        'Settembre',
+        'Ottobre',
+        'Novembre',
+        'Dicembre',
+      ];
+    case 'de':
+      return [
+        'Januar',
+        'Februar',
+        'März',
+        'April',
+        'Mai',
+        'Juni',
+        'Juli',
+        'August',
+        'September',
+        'Oktober',
+        'November',
+        'Dezember',
       ];
     default:
       return [
@@ -348,4 +505,3 @@ class utils {
 }
 
 export {utils};
-
