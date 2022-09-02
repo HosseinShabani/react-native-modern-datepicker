@@ -4,7 +4,15 @@ import moment from 'moment-jalaali';
 
 const m = moment();
 const jalaaliConfigs = {
-  dayNames: ['شنبه', 'یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه'],
+  dayNames: [
+    'شنبه',
+    'یکشنبه',
+    'دوشنبه',
+    'سه شنبه',
+    'چهارشنبه',
+    'پنجشنبه',
+    'جمعه',
+  ],
   dayNamesShort: ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'],
   monthNames: [
     'فروردین',
@@ -29,79 +37,171 @@ const jalaaliConfigs = {
   timeSelect: 'انتخاب',
   timeClose: 'بستن',
 };
-const gregorianConfigs = {
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-  monthNames: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+const gregorianConfigs = locale => ({
+  dayNames: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
   ],
+  dayNamesShort: localizeDayNameShort(locale),
+  monthNames: localizeMonths(locale),
   selectedFormat: 'YYYY/MM/DD',
   dateFormat: 'YYYY/MM/DD',
   monthYearFormat: 'YYYY MM',
   timeFormat: 'HH:mm',
-  hour: 'Hour',
-  minute: 'Minute',
-  timeSelect: 'Select',
-  timeClose: 'Close',
+  hour: localizeHourLabel(locale),
+  minute: localizeMinutesLabel(locale),
+  timeSelect: localizeSelectLabel(locale),
+  timeClose: localizeCloseLabel(locale),
+});
+
+const localizeDayNameShort = locale => {
+  switch (locale) {
+    case 'es':
+      return ['Do', 'Lu', 'Mr', 'Mi', 'Ju', 'Vi', 'Sa'];
+    default:
+      return ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+  }
+};
+
+const localizeHourLabel = locale => {
+  switch (locale) {
+    case 'es':
+      return 'Hora';
+    default:
+      return 'Hour';
+  }
+};
+
+const localizeMinutesLabel = locale => {
+  switch (locale) {
+    case 'es':
+      return 'Minutos';
+    default:
+      return 'Minutes';
+  }
+};
+
+const localizeSelectLabel = locale => {
+  switch (locale) {
+    case 'es':
+      return 'Seleccionar';
+    default:
+      return 'Select';
+  }
+};
+
+const localizeCloseLabel = locale => {
+  switch (locale) {
+    case 'es':
+      return 'Cerrar';
+    default:
+      return 'Close';
+  }
+};
+
+const localizeMonths = locale => {
+  switch (locale) {
+    case 'es':
+      return [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+      ];
+    default:
+      return [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+  }
 };
 
 class utils {
-  constructor({minimumDate, maximumDate, isGregorian, mode, reverse, configs}) {
+  constructor({
+    minimumDate,
+    maximumDate,
+    isGregorian,
+    mode,
+    reverse,
+    configs,
+    locale = 'en',
+  }) {
     this.data = {
       minimumDate,
       maximumDate,
       isGregorian,
       reverse: reverse === 'unset' ? !isGregorian : reverse,
     };
-    this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
+    this.config = isGregorian ? gregorianConfigs(locale) : jalaaliConfigs;
     this.config = {...this.config, ...configs};
     if (mode === 'time' || mode === 'datepicker') {
-      this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
+      this.config.selectedFormat =
+        this.config.dateFormat + ' ' + this.config.timeFormat;
     }
   }
 
   get flexDirection() {
-    return {flexDirection: this.data.reverse ? (I18nManager.isRTL ? 'row' : 'row-reverse') : 'row'};
+    return {
+      flexDirection: this.data.reverse
+        ? I18nManager.isRTL
+          ? 'row'
+          : 'row-reverse'
+        : 'row',
+    };
   }
 
-  getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
+  getFormated = (date, formatName = 'selectedFormat') =>
+    date.format(this.config[formatName]);
 
-  getFormatedDate = (date = new Date(), format = 'YYYY/MM/DD') => moment(date).format(format);
+  getFormatedDate = (date = new Date(), format = 'YYYY/MM/DD') =>
+    moment(date).format(format);
 
-  getTime = (time) => this.getDate(time).format(this.config.timeFormat);
+  getTime = time => this.getDate(time).format(this.config.timeFormat);
 
   getToday = () => this.getFormated(m, 'dateFormat');
 
-  getMonthName = (month) => this.config.monthNames[month];
+  getMonthName = month => this.config.monthNames[month];
 
-  toPersianNumber = (value) => {
+  toPersianNumber = value => {
     const {isGregorian} = this.data;
     return isGregorian
       ? this.toEnglish(String(value))
-      : String(value).replace(/[0-9]/g, (w) =>
+      : String(value).replace(/[0-9]/g, w =>
           String.fromCharCode(w.charCodeAt(0) + '۰'.charCodeAt(0) - 48),
         );
   };
 
-  toEnglish = (value) => {
+  toEnglish = value => {
     const charCodeZero = '۰'.charCodeAt(0);
-    return value.replace(/[۰-۹]/g, (w) => w.charCodeAt(0) - charCodeZero);
+    return value.replace(/[۰-۹]/g, w => w.charCodeAt(0) - charCodeZero);
   };
 
-  getDate = (time) => moment(time, this.config.selectedFormat);
+  getDate = time => moment(time, this.config.selectedFormat);
 
-  getMonthYearText = (time) => {
+  getMonthYearText = time => {
     const {isGregorian} = this.data;
     const date = this.getDate(time);
     const year = this.toPersianNumber(isGregorian ? date.year() : date.jYear());
@@ -109,7 +209,7 @@ class utils {
     return `${month} ${year}`;
   };
 
-  checkMonthDisabled = (time) => {
+  checkMonthDisabled = time => {
     const {minimumDate, maximumDate, isGregorian} = this.data;
     const date = this.getDate(time);
     let disabled = false;
@@ -128,7 +228,9 @@ class utils {
     const {isGregorian} = this.data;
     const date = this.getDate(time);
     return this.checkMonthDisabled(
-      this.getFormated(date.add(next ? -1 : 1, isGregorian ? 'month' : 'jMonth')),
+      this.getFormated(
+        date.add(next ? -1 : 1, isGregorian ? 'month' : 'jMonth'),
+      ),
     );
   };
 
@@ -143,13 +245,17 @@ class utils {
   checkSelectMonthDisabled = (time, month) => {
     const {isGregorian} = this.data;
     const date = this.getDate(time);
-    const dateWithNewMonth = isGregorian ? date.month(month) : date.jMonth(month);
+    const dateWithNewMonth = isGregorian
+      ? date.month(month)
+      : date.jMonth(month);
     return this.checkMonthDisabled(this.getFormated(dateWithNewMonth));
   };
 
   validYear = (time, year) => {
     const {minimumDate, maximumDate, isGregorian} = this.data;
-    const date = isGregorian ? this.getDate(time).year(year) : this.getDate(time).jYear(year);
+    const date = isGregorian
+      ? this.getDate(time).year(year)
+      : this.getDate(time).jYear(year);
     let validDate = this.getFormated(date);
     if (minimumDate && date < this.getDate(minimumDate)) {
       validDate = minimumDate;
@@ -160,7 +266,7 @@ class utils {
     return validDate;
   };
 
-  getMonthDays = (time) => {
+  getMonthDays = time => {
     const {minimumDate, maximumDate, isGregorian} = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
@@ -184,7 +290,9 @@ class utils {
         return {
           dayString: this.toPersianNumber(n + 1),
           day: n + 1,
-          date: this.getFormated(isGregorian ? date.date(n + 1) : date.jDate(n + 1)),
+          date: this.getFormated(
+            isGregorian ? date.date(n + 1) : date.jDate(n + 1),
+          ),
           disabled,
         };
       }),
@@ -196,7 +304,7 @@ class utils {
     const [changeWay, setChangeWay] = useState(null);
     const monthYearAnimation = useRef(new Animated.Value(0)).current;
 
-    const changeMonthAnimation = (type) => {
+    const changeMonthAnimation = type => {
       setChangeWay(type);
       setLastDate(activeDate);
       monthYearAnimation.setValue(1);
@@ -240,3 +348,4 @@ class utils {
 }
 
 export {utils};
+
