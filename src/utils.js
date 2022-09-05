@@ -217,7 +217,7 @@ class utils {
         {
           translateX: monthYearAnimation.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, changeWay === 'NEXT' ? -distance : distance],
+            outputRange: [0, changeWay === 'NEXT' ? distance : -distance],
           }),
         },
       ],
@@ -229,7 +229,7 @@ class utils {
         {
           translateX: monthYearAnimation.interpolate({
             inputRange: [0, 1],
-            outputRange: [changeWay === 'NEXT' ? distance : -distance, 0],
+            outputRange: [changeWay === 'NEXT' ? -distance : distance, 0],
           }),
         },
       ],
