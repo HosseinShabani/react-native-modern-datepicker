@@ -114,6 +114,7 @@ const optionsShape = {
   mainColor: PropTypes.string,
   textSecondaryColor: PropTypes.string,
   borderColor: PropTypes.string,
+  headerBorderWidth: PropTypes.number,
   defaultFont: PropTypes.string,
   headerFont: PropTypes.string,
   textFontSize: PropTypes.number,
