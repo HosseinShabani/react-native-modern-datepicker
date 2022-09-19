@@ -66,7 +66,7 @@ const Header = ({changeMonth}) => {
           ]}>
           <TouchableOpacity
             activeOpacity={0.7}
-            style={[style.centerWrapper, style.monthYearWrapper, utils.flexDirection]}
+            style={[options.headerBorderWidth ? style.centerWrapper : style.centerWrapperWithoutBorder, style.monthYearWrapper, utils.flexDirection]}
             onPress={() =>
               !disableDateChange &&
               setMainState({
@@ -84,7 +84,7 @@ const Header = ({changeMonth}) => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={[
-                style.centerWrapper,
+                options.headerBorderWidth ? style.centerWrapper : style.centerWrapperWithoutBorder,
                 {marginRight: I18nManager.isRTL ? 0 : 5, marginLeft: I18nManager.isRTL ? 5 : 0},
               ]}
               onPress={() =>
@@ -195,7 +195,12 @@ const styles = (theme) =>
       paddingHorizontal: 8,
       alignItems: 'center',
       borderRadius: 5,
-      borderWidth: 1,
+      borderWidth: theme.headerBorderWidth,
+    },
+    centerWrapperWithoutBorder: {
+      paddingVertical: 4,
+      paddingHorizontal: 8,
+      alignItems: 'center',
     },
     time: {
       marginRight: 5,
