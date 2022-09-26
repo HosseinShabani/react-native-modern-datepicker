@@ -1,9 +1,13 @@
-import React, {createContext, useReducer, useContext, useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {Calendar, SelectMonth, SelectTime} from './components';
+import Calendar from './components/Calendar';
+import SelectMonth from './components/SelectMonth';
+import SelectTime from './components/SelectTime';
 import {utils} from '../utils';
+
+import {CalendarContext} from './customHooks/useCalendar';
 
 const options = {
   backgroundColor: '#fff',
@@ -32,13 +36,6 @@ const reducer = (state, action) => {
     default:
       throw new Error('Unexpected action');
   }
-};
-
-const CalendarContext = createContext();
-
-const useCalendar = () => {
-  const contextValue = useContext(CalendarContext);
-  return contextValue;
 };
 
 const DatePicker = props => {
@@ -166,4 +163,4 @@ DatePicker.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-export {DatePicker, CalendarContext, useCalendar};
+export {DatePicker};
