@@ -1,7 +1,7 @@
 import React, {useState, useMemo} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-import {useCalendar} from '../DatePicker';
+import {useCalendar} from '../customHooks/useCalendar';
 
 const Days = () => {
   const {options, state, utils, onDateChange} = useCalendar();
@@ -91,4 +91,4 @@ const styles = theme =>
     },
   });
 
-export {Days};
+export default Days;

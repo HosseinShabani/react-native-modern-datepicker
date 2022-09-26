@@ -10,7 +10,7 @@ import {
   I18nManager,
 } from 'react-native';
 
-import {useCalendar} from '../DatePicker';
+import {useCalendar} from '../customHooks/useCalendar';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
@@ -271,4 +271,4 @@ const styles = theme =>
     },
   });
 
-export {SelectTime};
+export default SelectTime;

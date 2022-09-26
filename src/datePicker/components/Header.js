@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, TouchableOpacity, Text, Image, StyleSheet, Animated, I18nManager} from 'react-native';
 
-import {useCalendar} from '../DatePicker';
+import {useCalendar} from '../customHooks/useCalendar';
 
 const Header = ({changeMonth}) => {
   const {
@@ -210,4 +210,4 @@ Header.propTypes = {
   changeMonth: PropTypes.func,
 };
 
-export {Header};
+export default Header;
