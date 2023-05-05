@@ -18,7 +18,7 @@ const SelectMonth = () => {
     options,
     state,
     utils,
-    isGregorian,
+    language,
     selectorStartingYear,
     selectorEndingYear,
     mode,
@@ -56,7 +56,7 @@ const SelectMonth = () => {
       let y = Number(utils.toEnglish(year));
       const date = utils.getDate(utils.validYear(mainState.activeDate, y));
       const activeDate =
-        month !== null ? (isGregorian ? date.month(month) : date.jMonth(month)) : date;
+        month !== null ? (language !== 'jalaali' ? date.month(month) : date.jMonth(month)) : date;
       setMainState({
         type: 'set',
         activeDate: utils.getFormated(activeDate),

@@ -30,7 +30,7 @@ import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker';
 const JalaaliExample = () => {
   return (
     <DatePicker
-      isGregorian={false}
+      language='jalaali'
       options={{
         defaultFont: 'Shabnam-Light',
         headerFont: 'Shabnam-Medium',

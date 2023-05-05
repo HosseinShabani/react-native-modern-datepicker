@@ -12,7 +12,7 @@ const Header = ({changeMonth}) => {
     utils,
     minimumDate,
     maximumDate,
-    isGregorian,
+    language,
     mode,
   } = useCalendar();
   const [mainState, setMainState] = state;
@@ -37,7 +37,7 @@ const Header = ({changeMonth}) => {
     const modificationNumber = type === 'NEXT' ? 1 : -1;
     const newDate = utils
       .getDate(mainState.activeDate)
-      .add(modificationNumber, isGregorian ? 'month' : 'jMonth');
+      .add(modificationNumber, language !== 'jalaali' ? 'month' : 'jMonth');
     setMainState({
       type: 'set',
       activeDate: utils.getFormated(newDate),

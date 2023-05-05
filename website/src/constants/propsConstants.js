@@ -68,10 +68,10 @@ export const PROPS_CONST = [
     description: 'Disable month & year from being changed',
   },
   {
-    name: 'isGregorian',
-    type: 'Boolean',
-    default: 'true',
-    description: "Switches between 'Gregorian' & 'Jalaali' mode",
+    name: 'language',
+    type: 'string',
+    default: 'gregorian',
+    description: "input language 'gregorian', 'brazilian' or 'jalaali'",
   },
   {
     name: 'options',

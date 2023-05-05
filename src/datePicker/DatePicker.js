@@ -45,7 +45,7 @@ const DatePicker = props => {
   const calendarUtils = new utils(props);
   const contextValue = {
     ...props,
-    reverse: props.reverse === 'unset' ? !props.isGregorian : props.reverse,
+    reverse: props.reverse === 'unset' ? props.language === 'jalaali' : props.reverse,
     options: {...options, ...props.options},
     utils: calendarUtils,
     state: useReducer(reducer, {
@@ -136,7 +136,7 @@ DatePicker.defaultProps = {
   selectorStartingYear: 0,
   selectorEndingYear: 3000,
   disableDateChange: false,
-  isGregorian: true,
+  language: 'gregorian',
   configs: {},
   reverse: 'unset',
   options: {},
@@ -157,7 +157,7 @@ DatePicker.propTypes = {
   selectorStartingYear: PropTypes.number,
   selectorEndingYear: PropTypes.number,
   disableDateChange: PropTypes.bool,
-  isGregorian: PropTypes.bool,
+  language: PropTypes.string,
   configs: PropTypes.object,
   reverse: PropTypes.oneOf([true, false, 'unset']),
   options: PropTypes.shape(optionsShape),
