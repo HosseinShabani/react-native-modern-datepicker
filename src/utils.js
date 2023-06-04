@@ -193,13 +193,13 @@ class utils {
   };
 
   getMonthDays = (time) => {
-    const {minimumDate, maximumDate, language} = this.data;
+    const { minimumDate, maximumDate, language } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = language !== 'jalaali'
       ? date.daysInMonth()
       : moment.jDaysInMonth(date.jYear(), date.jMonth());
     const firstDay = language !== 'jalaali' ? date.date(1) : date.jDate(1);
-    const dayOfMonth = (firstDay.day() + Number(language !== 'jalaali')) % 7;
+    const dayOfMonth = (firstDay.day() + (language === 'jalaali' ? 1 : 0)) % 7;
     return [
       ...new Array(dayOfMonth),
       ...[...new Array(currentMonthDays)].map((i, n) => {
@@ -211,7 +211,7 @@ class utils {
         if (maximumDate && !disabled) {
           disabled = thisDay > this.getDate(maximumDate);
         }
-
+  
         date = this.getDate(time);
         return {
           dayString: this.toPersianNumber(n + 1),
@@ -221,7 +221,7 @@ class utils {
         };
       }),
     ];
-  };
+  };  
 
   useMonthAnimation = (activeDate, distance, onEnd = () => null) => {
     const [lastDate, setLastDate] = useState(activeDate);
