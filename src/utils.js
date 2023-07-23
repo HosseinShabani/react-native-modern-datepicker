@@ -30,9 +30,22 @@ const jalaaliConfigs = {
   timeClose: 'بستن',
 };
 const gregorianConfigs = {
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-  monthNames: [
+  dayNames: I18nManager.isRTL ? ["יום ראשון", "יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "יום שבת"] : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  dayNamesShort: I18nManager.isRTL ? ['סו', 'מו', 'טו', 'אנחנו', 'ה', 'ד', 'ש'] : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  monthNames: I18nManager.isRTL ? [   
+     'יָנוּאָר',
+     'פברואר',
+     'מרץ',
+     'אַפּרִיל',
+     'מאי',
+     'יוני',
+     'יולי',
+     'אוגוסט',
+     'סֶפּטֶמבֶּר',
+     'אוֹקְטוֹבֶּר',
+     'נוֹבֶמבֶּר',
+     'דֵצֶמבֶּר',   
+  ] : [
     'January',
     'February',
     'March',
@@ -50,10 +63,10 @@ const gregorianConfigs = {
   dateFormat: 'YYYY/MM/DD',
   monthYearFormat: 'YYYY MM',
   timeFormat: 'HH:mm',
-  hour: 'Hour',
-  minute: 'Minute',
-  timeSelect: 'Select',
-  timeClose: 'Close',
+  hour: I18nManager.isRTL ? 'שָׁעָה' : 'Hour',
+  minute: I18nManager.isRTL ? 'דַקָה' : 'Minute',
+  timeSelect: I18nManager.isRTL ? 'בחר' : 'Select',
+  timeClose: I18nManager.isRTL ? 'סגור' :  'Close',
 };
 
 class utils {
