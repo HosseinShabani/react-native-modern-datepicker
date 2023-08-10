@@ -38,7 +38,7 @@ const jalaaliConfigs = {
   timeClose: 'بستن',
 };
 const gregorianConfigs = locale => ({
-  dayNames: localizeDayNams(locale),
+  dayNames: localizeDayNames(locale),
   dayNamesShort: localizeDayNameShort(locale),
   monthNames: localizeMonths(locale),
   selectedFormat: 'YYYY/MM/DD',
@@ -51,8 +51,9 @@ const gregorianConfigs = locale => ({
   timeClose: localizeCloseLabel(locale),
 });
 
-const localizeDayNams = locale => {
+const localizeDayNames = locale => {
   switch (locale) {
+    case 'zh-cn': return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
     case 'es':
       return [
         'Domingo',
@@ -118,6 +119,7 @@ const localizeDayNams = locale => {
 
 const localizeDayNameShort = locale => {
   switch (locale) {
+    case 'zh-cn':return ['日','一','二','三','四','五','六'];
     case 'es':
       return ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
     case 'fr':
@@ -135,6 +137,7 @@ const localizeDayNameShort = locale => {
 
 const localizeHourLabel = locale => {
   switch (locale) {
+    case 'zh-cn':return '小时';
     case 'es':
       return 'Hora';
     case 'fr':
@@ -152,6 +155,7 @@ const localizeHourLabel = locale => {
 
 const localizeMinutesLabel = locale => {
   switch (locale) {
+    case 'zh-cn':return '分钟';
     case 'es':
       return 'Minutos';
     case 'fr':
@@ -169,6 +173,7 @@ const localizeMinutesLabel = locale => {
 
 const localizeSelectLabel = locale => {
   switch (locale) {
+    case 'zh-cn':return "选择"
     case 'es':
       return 'Seleccionar';
     case 'fr':
@@ -186,6 +191,7 @@ const localizeSelectLabel = locale => {
 
 const localizeCloseLabel = locale => {
   switch (locale) {
+    case 'zh-cn':return "关闭";
     case 'es':
       return 'Cerrar';
     case 'fr':
@@ -203,6 +209,8 @@ const localizeCloseLabel = locale => {
 
 const localizeMonths = locale => {
   switch (locale) {
+    case 'zh-cn': return ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+
     case 'es':
       return [
         'Enero',
