@@ -26,7 +26,7 @@ const TimeScroller = ({ title, data, onChange }) => {
   useEffect(() => {
     scrollListener.current && clearInterval(scrollListener.current);
     scrollListener.current = scrollAnimatedValue.addListener(({ value }) => (active.current = value));
-    console.log(scrollAnimatedValue)
+
     return () => {
       clearInterval(scrollListener.current);
     };
@@ -99,7 +99,7 @@ const TimeScroller = ({ title, data, onChange }) => {
         })}
         data={I18nManager.isRTL ? data.reverse() : data}
         onMomentumScrollEnd={() => {
-          console.log(active.current)
+      
           const index = Math.round(active.current / 36);
           onChange(data[index + 2]);
         }}
