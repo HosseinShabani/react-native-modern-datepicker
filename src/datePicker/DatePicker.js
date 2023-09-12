@@ -2,7 +2,7 @@ import React, {createContext, useReducer, useContext, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {Calendar, SelectMonth, SelectTime} from './components';
+import {Calendar, SelectMonth, SelectTime,SelectTimePeriod} from './components';
 import {utils} from '../utils';
 
 const options = {
@@ -42,6 +42,7 @@ const useCalendar = () => {
 };
 
 const DatePicker = props => {
+
   const calendarUtils = new utils(props);
   const contextValue = {
     ...props,
@@ -55,12 +56,15 @@ const DatePicker = props => {
         : '',
       monthOpen: props.mode === 'monthYear',
       timeOpen: props.mode === 'time',
+      periodTimeOpen: props.mode === 'period',
+
     }),
   };
   const [minHeight, setMinHeight] = useState(300);
   const style = styles(contextValue.options);
 
   const renderBody = () => {
+
     switch (contextValue.mode) {
       default:
       case 'datepicker':
@@ -82,6 +86,7 @@ const DatePicker = props => {
         return <SelectMonth />;
       case 'time':
         return <SelectTime />;
+      case 'period': return <SelectTimePeriod />
     }
   };
 

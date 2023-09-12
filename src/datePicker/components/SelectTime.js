@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -10,12 +10,12 @@ import {
   I18nManager,
 } from 'react-native';
 
-import {useCalendar} from '../DatePicker';
+import { useCalendar } from '../DatePicker';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
-const TimeScroller = ({title, data, onChange}) => {
-  const {options, utils} = useCalendar();
+const TimeScroller = ({ title, data, onChange }) => {
+  const { options, utils } = useCalendar();
   const [itemSize, setItemSize] = useState(0);
   const style = styles(options);
   const scrollAnimatedValue = useRef(new Animated.Value(0)).current;
@@ -25,22 +25,23 @@ const TimeScroller = ({title, data, onChange}) => {
 
   useEffect(() => {
     scrollListener.current && clearInterval(scrollListener.current);
-    scrollListener.current = scrollAnimatedValue.addListener(({value}) => (active.current = value));
+    scrollListener.current = scrollAnimatedValue.addListener(({ value }) => (active.current = value));
 
     return () => {
       clearInterval(scrollListener.current);
     };
   }, [scrollAnimatedValue]);
 
-  const changeItemWidth = ({nativeEvent}) => {
-    const {width} = nativeEvent.layout;
-    !itemSize && setItemSize(width / 5);
-  };
 
-  const renderItem = ({item, index}) => {
+  // const changeItemWidth = ({nativeEvent}) => {
+  //   const {} = nativeEvent.layout;
+  //   !itemSize && setItemSize(width / 5);
+  // };
+
+  const renderItem = ({ item, index }) => {
     const makeAnimated = (a, b, c) => {
       return {
-        inputRange: [...data.map((_, i) => i * itemSize)],
+        inputRange: [...data.map((_, i) => i * 36)],
         outputRange: [
           ...data.map((_, i) => {
             const center = i + 2;
@@ -56,11 +57,13 @@ const TimeScroller = ({title, data, onChange}) => {
       };
     };
 
+
     return (
       <Animated.View
         style={[
           {
-            width: itemSize,
+            width: '100%',
+
             opacity: scrollAnimatedValue.interpolate(makeAnimated(1, 0.6, 0.3)),
             transform: [
               {
@@ -81,20 +84,23 @@ const TimeScroller = ({title, data, onChange}) => {
   };
 
   return (
-    <View style={style.row} onLayout={changeItemWidth}>
+    <View style={style.row} >
       <Text style={style.title}>{title}</Text>
       <AnimatedFlatList
         pagingEnabled
+        style={{ width: '100%' }}
         showsHorizontalScrollIndicator={false}
-        horizontal
-        snapToInterval={itemSize}
+        // horizontal
+        showsVerticalScrollIndicator={false}
+        snapToInterval={36}
         decelerationRate={'fast'}
-        onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollAnimatedValue}}}], {
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollAnimatedValue } } }], {
           useNativeDriver: true,
         })}
         data={I18nManager.isRTL ? data.reverse() : data}
         onMomentumScrollEnd={() => {
-          const index = Math.round(active.current / itemSize);
+      
+          const index = Math.round(active.current / 36);
           onChange(data[index + 2]);
         }}
         keyExtractor={(_, i) => String(i)}
@@ -115,7 +121,7 @@ const TimeScroller = ({title, data, onChange}) => {
 };
 
 const SelectTime = () => {
-  const {options, state, utils, minuteInterval, mode, onTimeChange} = useCalendar();
+  const { options, state, utils, minuteInterval, mode, onTimeChange } = useCalendar();
   const [mainState, setMainState] = state;
   const [show, setShow] = useState(false);
   const [time, setTime] = useState({
@@ -153,11 +159,11 @@ const SelectTime = () => {
       activeDate: utils.getFormated(newTime),
       selectedDate: mainState.selectedDate
         ? utils.getFormated(
-            utils
-              .getDate(mainState.selectedDate)
-              .hour(time.hour)
-              .minute(time.minute),
-          )
+          utils
+            .getDate(mainState.selectedDate)
+            .hour(time.hour)
+            .minute(time.minute),
+        )
         : '',
     });
     onTimeChange(utils.getFormated(newTime, 'timeFormat'));
@@ -184,16 +190,24 @@ const SelectTime = () => {
 
   return show ? (
     <Animated.View style={containerStyle}>
-      <TimeScroller
-        title={utils.config.hour}
-        data={Array.from({length: 24}, (x, i) => i)}
-        onChange={hour => setTime({...time, hour})}
-      />
-      <TimeScroller
-        title={utils.config.minute}
-        data={Array.from({length: 60 / minuteInterval}, (x, i) => i * minuteInterval)}
-        onChange={minute => setTime({...time, minute})}
-      />
+      <View style={{ flexDirection: 'row', width: '100%', height: 180 }}>
+        <View style={{ flex: 1 }}>
+          <TimeScroller
+            title={utils.config.hour}
+            data={Array.from({ length: 24 }, (x, i) => i)}
+            onChange={hour => setTime({ ...time, hour })}
+          />
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <TimeScroller
+            title={utils.config.minute}
+            data={Array.from({ length: 60 / minuteInterval }, (x, i) => i * minuteInterval)}
+            onChange={minute => setTime({ ...time, minute })}
+          />
+        </View>
+      </View>
+
       <View style={style.footer}>
         <TouchableOpacity style={style.button} activeOpacity={0.8} onPress={selectTime}>
           <Text style={style.btnText}>{utils.config.timeSelect}</Text>
@@ -240,7 +254,7 @@ const styles = theme =>
       fontFamily: theme.headerFont,
     },
     listItem: {
-      height: 60,
+      height: 36,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -271,4 +285,4 @@ const styles = theme =>
     },
   });
 
-export {SelectTime};
+export { SelectTime };
